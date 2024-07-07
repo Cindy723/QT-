@@ -1,0 +1,117 @@
+/* myStyle.qss */
+
+*{
+    font-family: Arial, sans-serif;
+	 color: #d1d5db;
+}
+
+/* 设置整个界面的背景颜色 */ 
+
+QMainWindow {
+    background-color: #1c5875;
+}/* 实际生效的是代码中的 paintEvent */
+
+QMessageBox {
+    background-color: #2e2e2e;
+	color: white;
+}
+  
+QLineEdit {
+    background-color: lightgray;
+    border: 2px solid darkgray;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+/*
+QPushButton {
+    background-color: #f9f9f9;
+    color: #f9f9f9;
+    border: 1;
+    padding: 0px 5px;
+    text-align: center;
+    text-decoration: none; 
+    font-size: 14px;
+    margin: 1px 1px; 
+    border-radius: 4px;
+}
+*/
+
+QPushButton {
+    background-color: white; /* 将白色替换为你想要的颜色 */
+    color: black; /* 将文本颜色设置为黑色或其他合适的颜色 */
+}
+
+/* 按钮悬停效果 */
+QPushButton:hover {
+    background-color: #45a049;
+}
+ 
+ /* 设置表格背景颜色 */
+QTableWidget {
+    background-color: #1c5875;
+}
+
+/* 设置表格单元格的选择背景颜色
+QTableWidget::item:selected {
+    background-color: #2c9bf4; 
+}
+
+/* 表头 */
+QHeaderView:section {
+    background-color: #1c5875;
+    padding: 3px;
+} */
+
+/* 设置QComboBox的背景色和文字颜色 */
+QComboBox {
+    background-color: #f9f9f9;
+    color: #333333; /* 文字颜色 */
+    /*border: 1px solid #cccccc;  边框 */
+    /*padding: 2px; 内边距 */
+}
+
+/* 设置QComboBox的下拉箭头颜色 */
+QComboBox:down-arrow {
+    background-color: #1c5875;
+    image: url(:/down.png);  /*可以使用图片作为箭头 */
+    width: 10px; /* 箭头宽度 */
+    height: 10px; /* 箭头高度 */
+}
+ 
+/* 鼠标悬停时的样式 */
+QComboBox:hover {
+    background-color: #1c5875;
+}
+ 
+ /* 设置复选框的对钩颜色 */
+QCheckBox:indicator:checked {
+    color: white; /* 对钩颜色 */  
+}
+
+QScrollBar:vertical{
+	margin:0px 0px 0px 0px;
+	background-color: #454550;
+	border:none;
+	width:14px;
+}
+ 
+QScrollBar:horizontal{
+	margin:0px 0px 0px 0px;
+	background-color:#454550;
+	border:none;
+	height:14px;
+}
+
+/* 设置滚动条拖动条的颜色和边距 */
+QScrollBar::handle:vertical {
+	background: #a9a9a9; /* 设置拖动条颜色 */
+	margin: 16px 3px 16px 3px; /* 设置拖动条边距 */
+}
+
+/* 设置滚动条拖动条的颜色和边距 */
+QScrollBar::handle:horizontal {
+	background: #a9a9a9; /* 设置拖动条颜色 */
+	margin: 3px 16px 3px 16px; /* 设置拖动条边距 */
+}
+ 
