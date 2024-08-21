@@ -78,10 +78,10 @@ public:
         PBClose->setGeometry(QRect(730, 10, 31, 24));
         PB_OpenPort = new QPushButton(centralwidget);
         PB_OpenPort->setObjectName(QString::fromUtf8("PB_OpenPort"));
-        PB_OpenPort->setGeometry(QRect(190, 58, 81, 30));
+        PB_OpenPort->setGeometry(QRect(190, 57, 81, 30));
         PB_ClosePort = new QPushButton(centralwidget);
         PB_ClosePort->setObjectName(QString::fromUtf8("PB_ClosePort"));
-        PB_ClosePort->setGeometry(QRect(280, 58, 91, 30));
+        PB_ClosePort->setGeometry(QRect(280, 57, 91, 30));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         textEdit->setGeometry(QRect(410, 100, 361, 301));
