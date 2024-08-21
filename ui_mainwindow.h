@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -36,6 +37,9 @@ public:
     QPushButton *PB_ClosePort;
     QTextEdit *textEdit;
     QLabel *label_15;
+    QGroupBox *groupBox;
+    QPushButton *PB_read;
+    QPushButton *PB_set;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -90,6 +94,15 @@ public:
         label_15->setGeometry(QRect(410, 70, 41, 31));
         sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
         label_15->setSizePolicy(sizePolicy);
+        groupBox = new QGroupBox(centralwidget);
+        groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setGeometry(QRect(20, 170, 361, 221));
+        PB_read = new QPushButton(groupBox);
+        PB_read->setObjectName(QString::fromUtf8("PB_read"));
+        PB_read->setGeometry(QRect(20, 80, 91, 30));
+        PB_set = new QPushButton(groupBox);
+        PB_set->setObjectName(QString::fromUtf8("PB_set"));
+        PB_set->setGeometry(QRect(20, 40, 91, 30));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -115,6 +128,9 @@ public:
         PB_OpenPort->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\274\200\347\253\257\345\217\243", nullptr));
         PB_ClosePort->setText(QCoreApplication::translate("MainWindow", "\345\205\263\351\227\255\347\253\257\345\217\243", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "\344\277\241\346\201\257:", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
+        PB_read->setText(QCoreApplication::translate("MainWindow", "\346\240\241\345\207\206\346\225\260\346\215\256\350\257\273\345\207\272", nullptr));
+        PB_set->setText(QCoreApplication::translate("MainWindow", "\346\240\241\345\207\206\346\225\260\346\215\256\350\276\223\345\205\245", nullptr));
     } // retranslateUi
 
 };

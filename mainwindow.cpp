@@ -98,6 +98,14 @@ MainWindow::MainWindow(QWidget *parent)
          updateOperationResult(ui->comboBox->currentText() + " 关闭成功");
     });
 
+
+    // 模拟校准输入
+    connect(ui->PB_set, &QPushButton::clicked, this, [&](){
+                QByteArray temp = {"11233423543254325fff"};
+                m_SerialCom.sendData(temp);
+                setTextInfo("send:", temp);
+    });
+
     // 最小化按钮事件
     connect(ui->PBmini, &QPushButton::clicked, this, [&](){
        this->hide();

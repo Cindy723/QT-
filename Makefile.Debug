@@ -905,27 +905,6 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\qserialportinfo.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QMutex \
 		ui_mainwindow.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\qcoreapplication.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\qeventloop.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\qguiapplication.h \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\qinputmethod.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QMenuBar \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qmenubar.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qmenu.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qaction.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qactiongroup.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QStatusBar \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qstatusbar.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QTextEdit \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qtextedit.h \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextdocument.h \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextcursor.h \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextformat.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QListWidget \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qlistwidget.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qlistview.h \
@@ -934,6 +913,8 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qdialog.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QLineEdit \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qlineedit.h \
+		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextcursor.h \
+		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextformat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QProcess \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\qprocess.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \

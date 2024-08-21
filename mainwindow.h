@@ -13,6 +13,7 @@
 #include <QPainter>
 #include <QSystemTrayIcon>
 #include <SerialCommunication.h>
+#include "ui_mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,6 +34,14 @@ public:
     // 重写关闭事件处理函数
     void closeEvent(QCloseEvent *event) override;
     void ConnectRecev();
+
+    void setTextInfo(QString head, QString info)
+    {
+        if(ui)
+        {
+            ui->textEdit->append(head + info);
+        }
+    }
     /* 界面拖动与圆角实现 */
 protected:
         void mousePressEvent(QMouseEvent *event) override {
@@ -116,6 +125,7 @@ private:
     QLabel *Lable_softwareVersion; // Label for software version
 //signals:
 public slots:
+
 };
 
 #endif
