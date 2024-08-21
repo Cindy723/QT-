@@ -53,12 +53,16 @@ protected:
 
         void paintEvent(QPaintEvent *event) override {
             QPainter painter(this);
-            // 设置圆角
-            painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
-            //QColor fillColor("#2E2E2E"); // 背景
+
+            // 设置抗锯齿
+            painter.setRenderHint(QPainter::Antialiasing);
+
+            // 背景颜色
             QColor fillColor("#f9f9f9");
             painter.setBrush(fillColor);
             painter.setPen(Qt::transparent);
+
+            // 绘制圆角矩形
             QRect rect = this->rect();
             rect.setWidth(rect.width() - 1);
             rect.setHeight(rect.height() - 1);
@@ -68,6 +72,11 @@ protected:
             QColor penColor("#E94560");
             painter.setPen(QPen(penColor, 1));
             painter.drawLine(0, 45, width()-2, 43);
+
+            // 绘制边界线
+            QColor borderColor("#333333"); // 边界线颜色
+            painter.setPen(QPen(borderColor, 1)); // 设置边界线颜色和宽度
+            painter.drawRoundedRect(rect, 15, 15);
 
             QWidget::paintEvent(event);
         }
