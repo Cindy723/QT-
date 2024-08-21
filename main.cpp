@@ -25,11 +25,9 @@ int main(int argc, char *argv[])
 //    a.setStyleSheet(styleSheet);
     a.setWindowIcon(QIcon(":/icon.ico"));
 
-
-
     MainWindow w;
-    w.setMinimumSize(1024, 640);
-    w.setMaximumSize(1024, 640);
+    // w.setMinimumSize(1024, 640);
+    // w.setMaximumSize(1024, 640);
     w.show();
     return a.exec();
 }

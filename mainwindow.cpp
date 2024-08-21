@@ -55,30 +55,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->PBClose->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
     ui->PBClose->setStyleSheet("QPushButton { background-color: white; color: black; }");
 
-    ui->PB_J1ON->setIcon(QIcon(":/UNLOCK.png"));
-    //ui->PB_J1ON->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J2ON->setIcon(QIcon(":/UNLOCK.png"));
-    //ui->PB_J2ON->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J3ON->setIcon(QIcon(":/UNLOCK.png"));
-    //ui->PB_J3ON->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J4ON->setIcon(QIcon(":/UNLOCK.png"));
-    //ui->PB_J4ON->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J1OFF->setIcon(QIcon(":/LOCK.png"));
-    //ui->PB_J1OFF->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J2OFF->setIcon(QIcon(":/LOCK.png"));
-    //ui->PB_J2OFF->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J3OFF->setIcon(QIcon(":/LOCK.png"));
-    //ui->PB_J3OFF->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
-    ui->PB_J4OFF->setIcon(QIcon(":/LOCK.png"));
-    //ui->PB_J4OFF->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
-
     // 状态栏信息
     statusBar = new QStatusBar(this); // Step 1: Create the QStatusBar object
     setStatusBar(statusBar);           // Step 2: Set the status bar for the main window
@@ -121,41 +97,6 @@ MainWindow::MainWindow(QWidget *parent)
          m_SerialCom.closeSerialPort();
          updateOperationResult(ui->comboBox->currentText() + " 关闭成功");
     });
-
-    // 锁操作
-    connect(ui->PB_J1ON, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J1OpenArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁1打开指令");
-    });
-    connect(ui->PB_J2ON, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J2OpenArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁2打开指令");
-    });
-    connect(ui->PB_J3ON, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J3OpenArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁3打开指令");
-    });
-    connect(ui->PB_J4ON, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J4OpenArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁4打开指令");
-    });
-    connect(ui->PB_J1OFF, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J1OFFArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁1关闭指令");
-    });
-    connect(ui->PB_J2OFF, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J2OFFArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁2关闭指令");
-    });
-    connect(ui->PB_J3OFF, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J3OFFArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁3关闭指令");
-    });
-    connect(ui->PB_J4OFF, &QPushButton::clicked, this, [&](){
-        m_SerialCom.sendData(m_SerialCom.m_J4OFFArry);
-        updateOperationResult(ui->comboBox->currentText() + " 发送锁4关闭指令");
-    });
-
 
     // 最小化按钮事件
     connect(ui->PBmini, &QPushButton::clicked, this, [&](){
