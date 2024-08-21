@@ -17,6 +17,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +34,8 @@ public:
     QPushButton *PBClose;
     QPushButton *PB_OpenPort;
     QPushButton *PB_ClosePort;
+    QTextEdit *textEdit;
+    QLabel *label_15;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -40,12 +43,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(675, 436);
+        MainWindow->resize(781, 447);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(260, 10, 171, 31));
+        label_11->setGeometry(QRect(290, 10, 101, 31));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -66,23 +69,31 @@ public:
         label_14->setSizePolicy(sizePolicy);
         PBmini = new QPushButton(centralwidget);
         PBmini->setObjectName(QString::fromUtf8("PBmini"));
-        PBmini->setGeometry(QRect(560, 10, 31, 24));
+        PBmini->setGeometry(QRect(670, 10, 31, 24));
         PBSet = new QPushButton(centralwidget);
         PBSet->setObjectName(QString::fromUtf8("PBSet"));
-        PBSet->setGeometry(QRect(590, 10, 31, 24));
+        PBSet->setGeometry(QRect(700, 10, 31, 24));
         PBClose = new QPushButton(centralwidget);
         PBClose->setObjectName(QString::fromUtf8("PBClose"));
-        PBClose->setGeometry(QRect(620, 10, 31, 24));
+        PBClose->setGeometry(QRect(730, 10, 31, 24));
         PB_OpenPort = new QPushButton(centralwidget);
         PB_OpenPort->setObjectName(QString::fromUtf8("PB_OpenPort"));
         PB_OpenPort->setGeometry(QRect(190, 58, 81, 30));
         PB_ClosePort = new QPushButton(centralwidget);
         PB_ClosePort->setObjectName(QString::fromUtf8("PB_ClosePort"));
         PB_ClosePort->setGeometry(QRect(280, 58, 91, 30));
+        textEdit = new QTextEdit(centralwidget);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(410, 100, 361, 301));
+        label_15 = new QLabel(centralwidget);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        label_15->setGeometry(QRect(410, 70, 41, 31));
+        sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
+        label_15->setSizePolicy(sizePolicy);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 675, 21));
+        menubar->setGeometry(QRect(0, 0, 781, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -96,13 +107,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "\345\212\237\347\216\207\350\256\241\346\265\213\350\257\225\345\267\245\345\205\267", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "\346\265\213\350\257\225\345\267\245\345\205\267", nullptr));
         label_14->setText(QCoreApplication::translate("MainWindow", "COM\357\274\232", nullptr));
         PBmini->setText(QString());
         PBSet->setText(QString());
         PBClose->setText(QString());
         PB_OpenPort->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\274\200\347\253\257\345\217\243", nullptr));
         PB_ClosePort->setText(QCoreApplication::translate("MainWindow", "\345\205\263\351\227\255\347\253\257\345\217\243", nullptr));
+        label_15->setText(QCoreApplication::translate("MainWindow", "\344\277\241\346\201\257:", nullptr));
     } // retranslateUi
 
 };

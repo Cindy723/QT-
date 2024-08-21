@@ -110,6 +110,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 关闭按钮事件
     connect(ui->PBClose, &QPushButton::clicked, qApp, &QApplication::quit);
+
+    ui->textEdit->append("初始化结束");
 }
 
 MainWindow::~MainWindow()
