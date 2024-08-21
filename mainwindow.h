@@ -68,15 +68,15 @@ protected:
             rect.setHeight(rect.height() - 1);
             painter.drawRoundedRect(rect, 15, 15);
 
+            // 绘制边界线
+            QColor borderColor("#E94560"); // 边界线颜色
+            painter.setPen(QPen(borderColor, 1)); // 设置边界线颜色和宽度
+            painter.drawRoundedRect(rect, 15, 15);
+
             // 添加标题横线
             QColor penColor("#E94560");
             painter.setPen(QPen(penColor, 1));
             painter.drawLine(0, 45, width()-2, 43);
-
-            // 绘制边界线
-            QColor borderColor("#333333"); // 边界线颜色
-            painter.setPen(QPen(borderColor, 1)); // 设置边界线颜色和宽度
-            painter.drawRoundedRect(rect, 15, 15);
 
             QWidget::paintEvent(event);
         }
