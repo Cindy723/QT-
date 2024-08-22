@@ -40,7 +40,9 @@ private slots:
 private:
     int m_invalidCommunicate = 50;  // 通信间隔
     QMutex mutex;
-
+    QTimer *m_timer;
+    int m_timeoutInterval = 10;    // 超时时间（毫秒）
+    void onTimeout();
 public:
     QByteArray m_PlanArry = QByteArray::fromHex      ("5aa501a20801011101020300ff22"); // 下发设置计划
 

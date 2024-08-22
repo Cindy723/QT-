@@ -421,6 +421,13 @@ debug\moc_mainwindow.cpp: mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\QSerialPortInfo \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\qserialportinfo.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QMutex \
+		ui_mainwindow.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QDateTime \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdatetime.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		debug\moc_predefs.h \
 		D:\Qt\5.15.2\msvc2019\bin\moc.exe
 	D:\Qt\5.15.2\msvc2019\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include E:/Reynold/github/QTseriaTestDemo/debug/moc_predefs.h -ID:/Qt/5.15.2/msvc2019/mkspecs/win32-msvc -IE:/Reynold/github/QTseriaTestDemo -ID:/Qt/5.15.2/msvc2019/include -ID:/Qt/5.15.2/msvc2019/include/QtWidgets -ID:/Qt/5.15.2/msvc2019/include/QtGui -ID:/Qt/5.15.2/msvc2019/include/QtANGLE -ID:/Qt/5.15.2/msvc2019/include/QtSerialPort -ID:/Qt/5.15.2/msvc2019/include/QtCore -ID:\VS2019_IDE\VC\Tools\MSVC\14.28.29910\ATLMFC\include -ID:\VS2019_IDE\VC\Tools\MSVC\14.28.29910\include -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"D:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"D:\Windows Kits\10\include\10.0.19041.0\shared" -I"D:\Windows Kits\10\include\10.0.19041.0\um" -I"D:\Windows Kits\10\include\10.0.19041.0\winrt" -I"D:\Windows Kits\10\include\10.0.19041.0\cppwinrt" mainwindow.h -o debug\moc_mainwindow.cpp
@@ -725,6 +732,13 @@ debug\main.obj: main.cpp mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\QSerialPortInfo \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\qserialportinfo.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QMutex \
+		ui_mainwindow.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QDateTime \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdatetime.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\qcoreapplication.h \
@@ -905,6 +919,12 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtSerialPort\qserialportinfo.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QMutex \
 		ui_mainwindow.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QDateTime \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdatetime.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QListWidget \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qlistwidget.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qlistview.h \
@@ -917,10 +937,6 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextformat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QProcess \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\qprocess.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
-		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QRandomGenerator \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\qrandom.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\QCloseEvent \

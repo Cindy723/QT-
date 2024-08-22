@@ -14,10 +14,58 @@
 #include <QSystemTrayIcon>
 #include <SerialCommunication.h>
 #include "ui_mainwindow.h"
+#include <QDateTime>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+#define APPVERSION " Version 0.1 "
+#define BUFSIZE 1024
+
+class Worker : public QObject
+{
+    Q_OBJECT
+public:
+    Worker(SerialCommunication *serialCom) : m_SerialCom(serialCom) {}
+
+public slots:
+    void doWork()
+    {
+        QByteArray temp[BUFSIZE][3] = {
+                                       {"CH1_H", "FRE_CH=2000", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2100", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2200", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2300", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2400", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2500", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2600", "CH1_V?"},
+                                       {"CH1_H", "FRE_CH=2700", "CH1_V?"},
+                                       };
+
+        for (uint i = 0; i < 8; ++i)
+        {
+            for (uint j = 0; j < 3; ++j)
+            {
+                m_SerialCom->sendData(temp[i][j]);
+                emit updateUI("MCU<- ", temp[i][j]);
+                QThread::msleep(200);
+            }
+        }
+
+        emit workFinished();  // 发出完成信号
+    }
+
+signals:
+    void updateUI(QString head, QString info);
+    void workFinished();
+
+private:
+    SerialCommunication *m_SerialCom;  // 指向主类中串口对象的指针
+};
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -29,19 +77,23 @@ public:
 
     // 串口通信对象
     SerialCommunication m_SerialCom;
+    void setupConnections();
     void updateOperationResult(QString content);
 
     // 重写关闭事件处理函数
     void closeEvent(QCloseEvent *event) override;
     void ConnectRecev();
 
+
     void setTextInfo(QString head, QString info)
     {
         if(ui)
         {
-            ui->textEdit->append(head + info);
+            QString timestamp = QDateTime::currentDateTime().toString("[HH:mm:ss] ");
+            ui->textEdit->append(timestamp + head + info);
         }
     }
+
     /* 界面拖动与圆角实现 */
 protected:
         void mousePressEvent(QMouseEvent *event) override {
@@ -115,17 +167,22 @@ private:
         // 处理托盘图标点击事件
         void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui = nullptr;
     QStringList m_Portlist;
     QString m_CurretProt;
 
-    QStatusBar *statusBar;
-    QLabel *Lable_currentOperation; // Label for current operation
-    QLabel *Lable_OperationrResult; // Label for operation result
-    QLabel *Lable_softwareVersion; // Label for software version
+    // 串口循环发送线程
+    Worker *worker = nullptr;
+    QThread *thread = nullptr;
+
+    QStatusBar *statusBar = nullptr;
+    QLabel *Lable_currentOperation = nullptr; // Label for current operation
+    QLabel *Lable_OperationrResult = nullptr; // Label for operation result
+    QLabel *Lable_softwareVersion = nullptr; // Label for software version
 //signals:
 public slots:
 
 };
+
 
 #endif

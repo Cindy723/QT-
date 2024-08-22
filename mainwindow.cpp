@@ -5,12 +5,10 @@
 #include <QLineEdit>
 #include <qDebug>
 #include <QProcess>
-#include <QThread>
 #include <QRandomGenerator>
 #include <QCloseEvent>
 #include <QSettings>
-
-#define APPVERSION " Version 0.1 "
+#include <QObject>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -99,13 +97,6 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
 
-    // 模拟校准输入
-    connect(ui->PB_set, &QPushButton::clicked, this, [&](){
-                QByteArray temp = {"11233423543254325fff"};
-                m_SerialCom.sendData(temp);
-                setTextInfo("send:", temp);
-    });
-
     // 最小化按钮事件
     connect(ui->PBmini, &QPushButton::clicked, this, [&](){
        this->hide();
@@ -119,7 +110,16 @@ MainWindow::MainWindow(QWidget *parent)
     // 关闭按钮事件
     connect(ui->PBClose, &QPushButton::clicked, qApp, &QApplication::quit);
 
-    ui->textEdit->append("初始化结束");
+    // 清除信息
+    connect(ui->PB_clearInfo, &QPushButton::clicked, this, [&](){
+        ui->textEdit->clear();
+    });
+
+    // 连接串口数据
+    ConnectRecev();
+
+    // 模拟校准数据输入
+    setupConnections();
 }
 
 MainWindow::~MainWindow()
@@ -158,32 +158,45 @@ void MainWindow::ConnectRecev()
 
     // 这是第二次connect串口消息
      QObject::connect(&m_SerialCom, &SerialCommunication::dataReceived, this, [&](QByteArray &Data) {
-
-            if (Data.at(3) != (char) 0xb0 && Data.at(3) != (char) 0xe1 && Data.at(3) != (char) 0xe2) // 过滤时间 电能 温湿度打印
-            m_SerialCom.PrintQByteArray(QString("Received Size %1: ").arg(Data.size()), Data);
             int byteArrayLength = Data.size();
             unsigned char* ucharArray = new unsigned char[byteArrayLength];
             memset(ucharArray, 0, byteArrayLength);
             for (int i = 0; i < byteArrayLength; ++i) {
                 ucharArray[i] = static_cast<unsigned char>(Data.at(i));
             }
-            switch (ucharArray[3]) {
-            case 0xFF:
-               {
-                // 请求板子信息
-                //m_SerialCom.sendData(m_SerialCom.m_BspinfoArry);
-                break;
-               }
-            default:
-                qDebug() << "接受到未知指令 " ;
-                break;
-            }
+            setTextInfo("MCU-> ", Data);
 
             Data.clear();
             delete []ucharArray;
-     });// ctodo这行崩溃过
+     });
 
 }
+
+void MainWindow::setupConnections()
+{
+    connect(ui->PB_set, &QPushButton::clicked, this, [=]() {
+        // 此处存在内存泄漏
+        thread = new QThread;
+        worker  = new Worker(&m_SerialCom);
+        worker->moveToThread(thread);
+
+        connect(thread, &QThread::started, worker, &Worker::doWork);
+        connect(worker, &Worker::updateUI, this, &MainWindow::setTextInfo);
+        connect(worker, &Worker::workFinished, thread, &QThread::quit);
+        connect(worker, &Worker::workFinished, worker, &Worker::deleteLater);
+        connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+
+        qDebug() << "thread start";
+        if (thread->isRunning()) {
+            qDebug() << "thread isRunning";
+            thread->quit();
+            thread->wait();
+        }
+        thread->start();
+        qDebug() << "thread end";
+    });
+}
+
 
 void MainWindow::updateOperationResult(QString content)
 {
