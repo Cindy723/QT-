@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m_SocketClient.setMainInstan(this);
+    m_SerialCom.setMainInstan(this);
+
     setWindowFlags(Qt::FramelessWindowHint);  // 禁用标题栏
     setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
     ui->PBmini->setIcon(QIcon(":/mini.png"));
@@ -39,6 +42,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(restoreAction, &QAction::triggered, this, &MainWindow::restoreWindow);
     connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
     trayIcon->setContextMenu(trayIconMenu);
+
+    // 默认 IP
+    // ui->lineEdit_ip->setText("192.168.0.7");
+    // ui->lineEdit_port->setText("20108");
+    ui->lineEdit_ip->setText("127.0.0.1");
+    ui->lineEdit_port->setText("60000");
+
 
     // 设置按钮
     ui->PBmini->setIcon(QIcon(":/mini2.png"));
@@ -72,12 +82,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->comboBox, QOverload<int>::of(&QComboBox::activated),
             this, [&](){
         qDebug() << "comboBox activated " ;
-        m_Portlist = m_SerialCom.SearchCom();
-        ui->comboBox->clear();
-        ui->comboBox->addItems(m_Portlist);
+        // m_Portlist = m_SerialCom.SearchCom();
+        // ui->comboBox->clear();
+        // ui->comboBox->addItems(m_Portlist);
     });
 
-    // 打开端口按钮事件
+    // 打开端口按钮
     connect(ui->PB_OpenPort, &QPushButton::clicked, this, [&](){
         if(m_SerialCom.m_port != "")
         {
@@ -90,29 +100,66 @@ MainWindow::MainWindow(QWidget *parent)
             updateOperationResult(ui->comboBox->currentText() + " 打开失败! 可能端口被占用或硬件错误");
     });
 
-    // 关闭端口按钮事件
+    // 关闭端口按钮
     connect(ui->PB_ClosePort, &QPushButton::clicked, this, [&](){
+         worker->exit = 1;
          m_SerialCom.closeSerialPort();
          updateOperationResult(ui->comboBox->currentText() + " 关闭成功");
     });
 
+    // 停止发送按钮
+    connect(ui->PB_stopSend, &QPushButton::clicked, this, [&](){
+        worker->exit = 1;
+    });
 
-    // 最小化按钮事件
+    // 最小化按钮
     connect(ui->PBmini, &QPushButton::clicked, this, [&](){
        this->hide();
     });
 
-    // 设置按钮事件
+    // 设置按钮
     connect(ui->PBSet, &QPushButton::clicked, this, [&](){
 
     });
 
-    // 关闭按钮事件
+    // 关闭按钮
     connect(ui->PBClose, &QPushButton::clicked, qApp, &QApplication::quit);
 
     // 清除信息
     connect(ui->PB_clearInfo, &QPushButton::clicked, this, [&](){
-        ui->textEdit->clear();
+        ui->textEdit_rec->clear();
+    });
+
+    // 发送按钮
+    connect(ui->PB_send, &QPushButton::clicked, this, [&](){
+        QByteArray byteArray = ui->textEdit_send->toPlainText().toUtf8();
+
+        int method = 0;
+        if(m_SerialCom.m_port == "")
+        {
+            qDebug() << "端口未打开";
+        }else method = 1;
+
+        if(m_SocketClient.m_conncetFlag == 0)
+        {
+            qDebug() << "网诺未连接";
+        }else  method = 2;
+
+        if(method == 1)
+        {
+            m_SerialCom.sendData(byteArray);
+        }
+        else if(method == 2)
+        {
+            m_SocketClient.sendData(byteArray);
+        }
+        setTextInfo("MCU<- ", byteArray);
+    });
+
+    // 连接按钮
+    connect(ui->PB_Connect, &QPushButton::clicked, this, [&](){
+        updateOperationResult("连接到 "+ ui->lineEdit_ip->text());
+        m_SocketClient.connectToHost(ui->lineEdit_ip->text(), ui->lineEdit_port->text().toInt());
     });
 
     // 连接串口数据
@@ -145,7 +192,6 @@ void MainWindow::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
     }
 }
 
-
 // 重写关闭事件处理函数
 void MainWindow::closeEvent(QCloseEvent *event)
 {
@@ -174,17 +220,18 @@ void MainWindow::ConnectRecev()
 
 void MainWindow::setupConnections()
 {
-    connect(ui->PB_set, &QPushButton::clicked, this, [=]() {
+    connect(ui->PB_testIn, &QPushButton::clicked, this, [=]() {
         // 此处存在内存泄漏
         thread = new QThread;
-        worker  = new Worker(&m_SerialCom);
+        worker  = new Worker(&m_SerialCom, &m_SocketClient);
         worker->moveToThread(thread);
 
         connect(thread, &QThread::started, worker, &Worker::doWork);
-        connect(worker, &Worker::updateUI, this, &MainWindow::setTextInfo);
-        connect(worker, &Worker::workFinished, thread, &QThread::quit);
-        connect(worker, &Worker::workFinished, worker, &Worker::deleteLater);
+        connect(worker, &Worker::sig_updateUI, this, &MainWindow::setTextInfo);
+        connect(worker, &Worker::sig_workFinished, thread, &QThread::quit);
+        connect(worker, &Worker::sig_workFinished, worker, &Worker::deleteLater);
         connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+        connect(worker, &Worker::sig_sockeSendData, &m_SocketClient, &MySocketClient::sendData);
 
         qDebug() << "thread start";
         if (thread->isRunning()) {

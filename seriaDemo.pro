@@ -1,5 +1,5 @@
 QT       += core gui
-QT       += serialport
+QT       += serialport network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,14 +10,18 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    MySocketClient.cpp \
     SerialCommunication.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    worker.cpp
 
 HEADERS += \
     DefineDataStruct.h \
+    MySocketClient.h \
     SerialCommunication.h \
-    mainwindow.h
+    mainwindow.h \
+    worker.h
 
 FORMS += \
     mainwindow.ui

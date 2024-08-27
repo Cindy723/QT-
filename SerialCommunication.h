@@ -10,14 +10,15 @@
 
 #define PLANLENTH 8
 
+class MainWindow;
 class SerialCommunication : public QObject
 {
     Q_OBJECT
 
 public:
     explicit SerialCommunication(QObject *parent = nullptr);
+    void setMainInstan(MainWindow *p);
     ~SerialCommunication();
-    friend class MainWindow;
     QString m_port; // 当前串口
     QStringList SearchCom(void);
     bool openSerialPort(const QString &portName);
@@ -38,6 +39,7 @@ private slots:
     void slot_handleReadyRead();
     //void slot_handleError(QSerialPort::SerialPortError error);
 private:
+    MainWindow *m_main;
     int m_invalidCommunicate = 50;  // 通信间隔
     QMutex mutex;
     QTimer *m_timer;

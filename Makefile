@@ -264,6 +264,7 @@ Makefile: seriaDemo.pro D:\Qt\5.15.2\msvc2019\mkspecs\win32-msvc\qmake.conf D:\Q
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Widgets.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Gui.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5SerialPort.prl \
+		D:\Qt\5.15.2\msvc2019\lib\Qt5Network.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Core.prl \
 		D:\Qt\5.15.2\msvc2019\lib\qtmain.prl \
 		D:\Qt\5.15.2\msvc2019\mkspecs\features\build_pass.prf \
@@ -272,6 +273,7 @@ Makefile: seriaDemo.pro D:\Qt\5.15.2\msvc2019\mkspecs\win32-msvc\qmake.conf D:\Q
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Widgetsd.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Guid.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5SerialPortd.prl \
+		D:\Qt\5.15.2\msvc2019\lib\Qt5Networkd.prl \
 		D:\Qt\5.15.2\msvc2019\lib\Qt5Cored.prl \
 		D:\Qt\5.15.2\msvc2019\lib\qtmaind.prl \
 		release\qmake_qmake_qm_files.qrc
@@ -456,6 +458,7 @@ seriaDemo.pro:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Widgets.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Gui.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5SerialPort.prl:
+D:\Qt\5.15.2\msvc2019\lib\Qt5Network.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Core.prl:
 D:\Qt\5.15.2\msvc2019\lib\qtmain.prl:
 D:\Qt\5.15.2\msvc2019\mkspecs\features\build_pass.prf:
@@ -464,6 +467,7 @@ debug\qmake_qmake_qm_files.qrc:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Widgetsd.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Guid.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5SerialPortd.prl:
+D:\Qt\5.15.2\msvc2019\lib\Qt5Networkd.prl:
 D:\Qt\5.15.2\msvc2019\lib\Qt5Cored.prl:
 D:\Qt\5.15.2\msvc2019\lib\qtmaind.prl:
 release\qmake_qmake_qm_files.qrc:

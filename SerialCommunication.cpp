@@ -3,6 +3,7 @@
 #include <QThread>
 #include <vector>
 #include <Qtimer>
+#include "mainwindow.h"
 
 SerialCommunication::SerialCommunication(QObject *parent)
     : QObject(parent)
@@ -14,6 +15,11 @@ SerialCommunication::SerialCommunication(QObject *parent)
     m_timer->setSingleShot(true); // 确保定时器只触发一次
 
     connect(m_timer, &QTimer::timeout, this, &SerialCommunication::onTimeout);
+}
+
+void SerialCommunication::setMainInstan(MainWindow *p)
+{
+    m_main = p;
 }
 
 SerialCommunication::~SerialCommunication()
@@ -88,6 +94,7 @@ bool SerialCommunication::sendData(QByteArray data)
     /// 注意 QByteArray byte("\xa1\xa2"); 这种方式初始化 QByteArray 时遇到00 就会认为发送结束
     /// char 数组中间有0x00 也认为发送结束。。
     PrintQByteArray("send(hex):", data);
+    data += '\n';
     qint64 bytesWritten = m_serialPort.write(data);
     m_serialPort.waitForReadyRead(m_invalidCommunicate);
     return bytesWritten != -1; //这里即便中途USB脱落也不会发送失败

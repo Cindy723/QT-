@@ -12,60 +12,20 @@
 #include <QRegion>
 #include <QPainter>
 #include <QSystemTrayIcon>
-#include <SerialCommunication.h>
+#include "SerialCommunication.h"
 #include "ui_mainwindow.h"
 #include <QDateTime>
 #include <QThread>
+#include <qDebug>
+#include "MySocketClient.h"
+#include "Worker.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 #define APPVERSION " Version 0.1 "
-#define BUFSIZE 1024
-
-class Worker : public QObject
-{
-    Q_OBJECT
-public:
-    Worker(SerialCommunication *serialCom) : m_SerialCom(serialCom) {}
-
-public slots:
-    void doWork()
-    {
-        QByteArray temp[BUFSIZE][3] = {
-                                       {"CH1_H", "FRE_CH=2000", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2100", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2200", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2300", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2400", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2500", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2600", "CH1_V?"},
-                                       {"CH1_H", "FRE_CH=2700", "CH1_V?"},
-                                       };
-
-        for (uint i = 0; i < 8; ++i)
-        {
-            for (uint j = 0; j < 3; ++j)
-            {
-                m_SerialCom->sendData(temp[i][j]);
-                emit updateUI("MCU<- ", temp[i][j]);
-                QThread::msleep(200);
-            }
-        }
-
-        emit workFinished();  // 发出完成信号
-    }
-
-signals:
-    void updateUI(QString head, QString info);
-    void workFinished();
-
-private:
-    SerialCommunication *m_SerialCom;  // 指向主类中串口对象的指针
-};
-
-
 
 class MainWindow : public QMainWindow
 {
@@ -77,6 +37,7 @@ public:
 
     // 串口通信对象
     SerialCommunication m_SerialCom;
+    MySocketClient m_SocketClient;
     void setupConnections();
     void updateOperationResult(QString content);
 
@@ -90,7 +51,7 @@ public:
         if(ui)
         {
             QString timestamp = QDateTime::currentDateTime().toString("[HH:mm:ss] ");
-            ui->textEdit->append(timestamp + head + info);
+            ui->textEdit_rec->append(timestamp + head + info);
         }
     }
 

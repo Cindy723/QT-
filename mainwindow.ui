@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>812</width>
+    <width>784</width>
     <height>547</height>
    </rect>
   </property>
@@ -53,8 +53,8 @@
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>53</y>
+      <x>30</x>
+      <y>55</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -111,9 +111,9 @@
    <widget class="QPushButton" name="PB_OpenPort">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>210</x>
       <y>57</y>
-      <width>81</width>
+      <width>61</width>
       <height>25</height>
      </rect>
     </property>
@@ -124,9 +124,9 @@
    <widget class="QPushButton" name="PB_ClosePort">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>290</x>
       <y>57</y>
-      <width>91</width>
+      <width>71</width>
       <height>25</height>
      </rect>
     </property>
@@ -134,7 +134,7 @@
      <string>关闭端口</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textEdit_rec">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -170,7 +170,7 @@
      <string>校准数据读出</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="PB_set">
+   <widget class="QPushButton" name="PB_testIn">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -183,7 +183,7 @@
      <string>校准数据输入</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="PB_clearInfo_2">
+   <widget class="QPushButton" name="PB_send">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -206,10 +206,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>接收区</string>
+     <string>数据记录</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="textEdit_send">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -232,13 +232,97 @@
      <string>发送区</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_ip">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>60</y>
+      <width>151</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>55</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>IP:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_port">
+    <property name="geometry">
+     <rect>
+      <x>632</x>
+      <y>60</y>
+      <width>71</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>55</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>Port:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PB_Connect">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>58</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>连接</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PB_stopSend">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>465</y>
+      <width>81</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>停止传输</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>812</width>
+     <width>784</width>
      <height>21</height>
     </rect>
    </property>

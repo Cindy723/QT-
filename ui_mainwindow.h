@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -34,14 +35,20 @@ public:
     QPushButton *PBClose;
     QPushButton *PB_OpenPort;
     QPushButton *PB_ClosePort;
-    QTextEdit *textEdit;
+    QTextEdit *textEdit_rec;
     QPushButton *PB_clearInfo;
     QPushButton *PB_read;
-    QPushButton *PB_set;
-    QPushButton *PB_clearInfo_2;
+    QPushButton *PB_testIn;
+    QPushButton *PB_send;
     QLabel *label;
-    QTextEdit *textEdit_2;
+    QTextEdit *textEdit_send;
     QLabel *label_2;
+    QLineEdit *lineEdit_ip;
+    QLabel *label_15;
+    QLineEdit *lineEdit_port;
+    QLabel *label_16;
+    QPushButton *PB_Connect;
+    QPushButton *PB_stopSend;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -49,7 +56,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(812, 547);
+        MainWindow->resize(784, 547);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label_11 = new QLabel(centralwidget);
@@ -70,7 +77,7 @@ public:
         comboBox->setGeometry(QRect(80, 58, 101, 23));
         label_14 = new QLabel(centralwidget);
         label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(20, 53, 41, 31));
+        label_14->setGeometry(QRect(30, 55, 41, 31));
         sizePolicy.setHeightForWidth(label_14->sizePolicy().hasHeightForWidth());
         label_14->setSizePolicy(sizePolicy);
         PBmini = new QPushButton(centralwidget);
@@ -84,38 +91,60 @@ public:
         PBClose->setGeometry(QRect(730, 10, 31, 24));
         PB_OpenPort = new QPushButton(centralwidget);
         PB_OpenPort->setObjectName(QString::fromUtf8("PB_OpenPort"));
-        PB_OpenPort->setGeometry(QRect(190, 57, 81, 25));
+        PB_OpenPort->setGeometry(QRect(210, 57, 61, 25));
         PB_ClosePort = new QPushButton(centralwidget);
         PB_ClosePort->setObjectName(QString::fromUtf8("PB_ClosePort"));
-        PB_ClosePort->setGeometry(QRect(280, 57, 91, 25));
-        textEdit = new QTextEdit(centralwidget);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(30, 120, 341, 331));
+        PB_ClosePort->setGeometry(QRect(290, 57, 71, 25));
+        textEdit_rec = new QTextEdit(centralwidget);
+        textEdit_rec->setObjectName(QString::fromUtf8("textEdit_rec"));
+        textEdit_rec->setGeometry(QRect(30, 120, 341, 331));
         PB_clearInfo = new QPushButton(centralwidget);
         PB_clearInfo->setObjectName(QString::fromUtf8("PB_clearInfo"));
         PB_clearInfo->setGeometry(QRect(330, 470, 41, 21));
         PB_read = new QPushButton(centralwidget);
         PB_read->setObjectName(QString::fromUtf8("PB_read"));
-        PB_read->setGeometry(QRect(510, 460, 81, 30));
-        PB_set = new QPushButton(centralwidget);
-        PB_set->setObjectName(QString::fromUtf8("PB_set"));
-        PB_set->setGeometry(QRect(410, 460, 81, 30));
-        PB_clearInfo_2 = new QPushButton(centralwidget);
-        PB_clearInfo_2->setObjectName(QString::fromUtf8("PB_clearInfo_2"));
-        PB_clearInfo_2->setGeometry(QRect(710, 470, 41, 21));
+        PB_read->setGeometry(QRect(510, 465, 81, 30));
+        PB_testIn = new QPushButton(centralwidget);
+        PB_testIn->setObjectName(QString::fromUtf8("PB_testIn"));
+        PB_testIn->setGeometry(QRect(410, 465, 81, 30));
+        PB_send = new QPushButton(centralwidget);
+        PB_send->setObjectName(QString::fromUtf8("PB_send"));
+        PB_send->setGeometry(QRect(710, 470, 41, 21));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 100, 53, 15));
-        textEdit_2 = new QTextEdit(centralwidget);
-        textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        textEdit_2->setGeometry(QRect(410, 120, 341, 331));
+        textEdit_send = new QTextEdit(centralwidget);
+        textEdit_send->setObjectName(QString::fromUtf8("textEdit_send"));
+        textEdit_send->setGeometry(QRect(410, 120, 341, 331));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(410, 100, 53, 15));
+        lineEdit_ip = new QLineEdit(centralwidget);
+        lineEdit_ip->setObjectName(QString::fromUtf8("lineEdit_ip"));
+        lineEdit_ip->setGeometry(QRect(430, 60, 151, 23));
+        label_15 = new QLabel(centralwidget);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        label_15->setGeometry(QRect(410, 55, 21, 31));
+        sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
+        label_15->setSizePolicy(sizePolicy);
+        lineEdit_port = new QLineEdit(centralwidget);
+        lineEdit_port->setObjectName(QString::fromUtf8("lineEdit_port"));
+        lineEdit_port->setGeometry(QRect(632, 60, 71, 23));
+        label_16 = new QLabel(centralwidget);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+        label_16->setGeometry(QRect(600, 55, 31, 31));
+        sizePolicy.setHeightForWidth(label_16->sizePolicy().hasHeightForWidth());
+        label_16->setSizePolicy(sizePolicy);
+        PB_Connect = new QPushButton(centralwidget);
+        PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
+        PB_Connect->setGeometry(QRect(710, 58, 41, 25));
+        PB_stopSend = new QPushButton(centralwidget);
+        PB_stopSend->setObjectName(QString::fromUtf8("PB_stopSend"));
+        PB_stopSend->setGeometry(QRect(610, 465, 81, 30));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 812, 21));
+        menubar->setGeometry(QRect(0, 0, 784, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -138,10 +167,14 @@ public:
         PB_ClosePort->setText(QCoreApplication::translate("MainWindow", "\345\205\263\351\227\255\347\253\257\345\217\243", nullptr));
         PB_clearInfo->setText(QCoreApplication::translate("MainWindow", "\346\270\205\347\251\272", nullptr));
         PB_read->setText(QCoreApplication::translate("MainWindow", "\346\240\241\345\207\206\346\225\260\346\215\256\350\257\273\345\207\272", nullptr));
-        PB_set->setText(QCoreApplication::translate("MainWindow", "\346\240\241\345\207\206\346\225\260\346\215\256\350\276\223\345\205\245", nullptr));
-        PB_clearInfo_2->setText(QCoreApplication::translate("MainWindow", "\345\217\221\351\200\201", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\346\216\245\346\224\266\345\214\272", nullptr));
+        PB_testIn->setText(QCoreApplication::translate("MainWindow", "\346\240\241\345\207\206\346\225\260\346\215\256\350\276\223\345\205\245", nullptr));
+        PB_send->setText(QCoreApplication::translate("MainWindow", "\345\217\221\351\200\201", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "\346\225\260\346\215\256\350\256\260\345\275\225", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\345\217\221\351\200\201\345\214\272", nullptr));
+        label_15->setText(QCoreApplication::translate("MainWindow", "IP:", nullptr));
+        label_16->setText(QCoreApplication::translate("MainWindow", "Port:", nullptr));
+        PB_Connect->setText(QCoreApplication::translate("MainWindow", "\350\277\236\346\216\245", nullptr));
+        PB_stopSend->setText(QCoreApplication::translate("MainWindow", "\345\201\234\346\255\242\344\274\240\350\276\223", nullptr));
     } // retranslateUi
 
 };
