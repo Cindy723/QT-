@@ -14,6 +14,7 @@ SOURCES += \
     SerialCommunication.cpp \
     main.cpp \
     mainwindow.cpp \
+    setting.cpp \
     worker.cpp
 
 HEADERS += \
@@ -21,10 +22,12 @@ HEADERS += \
     MySocketClient.h \
     SerialCommunication.h \
     mainwindow.h \
+    setting.h \
     worker.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    setting.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

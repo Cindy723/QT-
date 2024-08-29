@@ -1,26 +1,6 @@
 /* myStyle.qss */
-  
-QWidget {
-    background-color: #1c5875;
-	color: #d1d5db;
-}
 
 
-/* 设置QComboBox下拉框中的文字颜色和背景颜色 */
-QComboBox:QAbstractItemView {
-    color: #ffffff; /* 下拉框文字颜色 */
-    background-color: #ffffff; /* 下拉框背景颜色 */
-    selection-background-color: #a0a0a0; /* 选中项背景颜色 */
-}
-
-/* 设置QComboBox的下拉箭头颜色 */
-QComboBox:down-arrow {
-    background-color: #1c5875;
-    image: url(:/down.png);  /*可以使用图片作为箭头 */
-    width: 10px; /* 箭头宽度 */
-    height: 10px; /* 箭头高度 */
-}
- 
 
 QPushButton {
     background-color: #00569a;
@@ -28,11 +8,12 @@ QPushButton {
     border: 1;
     padding: 0px 5px;
     text-align: center;
-    text-decoration: none; 
+    text-decoration: none;
     font-size: 14px;
-    margin: 1px 1px; 
+    margin: 1px 1px;
     border-radius: 4px;
 }
+
 
 /* 按钮悬停效果 */
 QPushButton:hover {

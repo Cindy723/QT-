@@ -71,7 +71,7 @@ bool SerialCommunication::openSerialPort(const QString &portName)
         return false;
     }
 
-    m_serialPort.setBaudRate(QSerialPort::Baud9600);
+    m_serialPort.setBaudRate(QSerialPort::Baud115200);
     m_serialPort.setDataBits(QSerialPort::Data8);
     m_serialPort.setParity(QSerialPort::NoParity);
     m_serialPort.setStopBits(QSerialPort::OneStop);

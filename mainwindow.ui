@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>784</width>
-    <height>547</height>
+    <height>689</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -147,10 +147,10 @@
    <widget class="QPushButton" name="PB_clearInfo">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>470</y>
-      <width>41</width>
-      <height>21</height>
+      <x>320</x>
+      <y>460</y>
+      <width>51</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
@@ -160,8 +160,8 @@
    <widget class="QPushButton" name="PB_read">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>465</y>
+      <x>130</x>
+      <y>600</y>
       <width>81</width>
       <height>30</height>
      </rect>
@@ -173,8 +173,8 @@
    <widget class="QPushButton" name="PB_testIn">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>465</y>
+      <x>30</x>
+      <y>600</y>
       <width>81</width>
       <height>30</height>
      </rect>
@@ -186,10 +186,10 @@
    <widget class="QPushButton" name="PB_send">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>470</y>
-      <width>41</width>
-      <height>21</height>
+      <x>320</x>
+      <y>600</y>
+      <width>51</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -212,18 +212,18 @@
    <widget class="QTextEdit" name="textEdit_send">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>120</y>
+      <x>30</x>
+      <y>505</y>
       <width>341</width>
-      <height>331</height>
+      <height>81</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>100</y>
+      <x>30</x>
+      <y>485</y>
       <width>53</width>
       <height>15</height>
      </rect>
@@ -235,7 +235,7 @@
    <widget class="QLineEdit" name="lineEdit_ip">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>410</x>
       <y>60</y>
       <width>151</width>
       <height>23</height>
@@ -245,7 +245,7 @@
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>390</x>
       <y>55</y>
       <width>21</width>
       <height>31</height>
@@ -264,7 +264,7 @@
    <widget class="QLineEdit" name="lineEdit_port">
     <property name="geometry">
      <rect>
-      <x>632</x>
+      <x>612</x>
       <y>60</y>
       <width>71</width>
       <height>23</height>
@@ -274,7 +274,7 @@
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>580</x>
       <y>55</y>
       <width>31</width>
       <height>31</height>
@@ -293,9 +293,9 @@
    <widget class="QPushButton" name="PB_Connect">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>700</x>
       <y>58</y>
-      <width>41</width>
+      <width>61</width>
       <height>25</height>
      </rect>
     </property>
@@ -306,8 +306,8 @@
    <widget class="QPushButton" name="PB_stopSend">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>465</y>
+      <x>230</x>
+      <y>600</y>
       <width>81</width>
       <height>30</height>
      </rect>
@@ -315,6 +315,276 @@
     <property name="text">
      <string>停止传输</string>
     </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>100</y>
+      <width>53</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>快捷指令</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>100</y>
+      <width>53</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>备注</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>120</y>
+      <width>141</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_1"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_2"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_3"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_4"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_5"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_6"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_7"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_8"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_9"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_10"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_11"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_12"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_13"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_14"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_15"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_tips_16"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>120</y>
+      <width>135</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s1"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s2"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s3"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s4"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s5"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s6"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s7"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s8"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s9"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s10"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s11"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s12"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s13"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s14"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s15"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_s16"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>120</y>
+      <width>77</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QPushButton" name="PB_send_1">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_2">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_3">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_4">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_5">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_6">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_7">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_8">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_9">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_10">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_11">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_12">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_13">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_14">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_15">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_send_16">
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

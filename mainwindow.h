@@ -19,13 +19,13 @@
 #include <qDebug>
 #include "MySocketClient.h"
 #include "Worker.h"
-
+#include "setting.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-#define APPVERSION " Version 0.1 "
+#define APPVERSION " Version 0.2 "
 
 class MainWindow : public QMainWindow
 {
@@ -45,15 +45,7 @@ public:
     void closeEvent(QCloseEvent *event) override;
     void ConnectRecev();
 
-
-    void setTextInfo(QString head, QString info)
-    {
-        if(ui)
-        {
-            QString timestamp = QDateTime::currentDateTime().toString("[HH:mm:ss] ");
-            ui->textEdit_rec->append(timestamp + head + info);
-        }
-    }
+    void setHistoryTextInfo(QString head, QString info);
 
     /* 界面拖动与圆角实现 */
 protected:
@@ -131,6 +123,7 @@ private:
     Ui::MainWindow *ui = nullptr;
     QStringList m_Portlist;
     QString m_CurretProt;
+    Setting *m_setWidget;
 
     // 串口循环发送线程
     Worker *worker = nullptr;
@@ -140,6 +133,9 @@ private:
     QLabel *Lable_currentOperation = nullptr; // Label for current operation
     QLabel *Lable_OperationrResult = nullptr; // Label for operation result
     QLabel *Lable_softwareVersion = nullptr; // Label for software version
+    void checkMethodAndSendFun(QByteArray byteArray);
+    void loadSettings();
+    void saveSettings();
 //signals:
 public slots:
 
