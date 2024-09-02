@@ -24,18 +24,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     setWindowFlags(Qt::FramelessWindowHint);  // 禁用标题栏
     setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
-    ui->PBmini->setIcon(QIcon(":/mini.png"));
+    ui->PBmini->setIcon(QIcon(":/image/mini.png"));
     ui->PBmini->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
 
-    ui->PBSet->setIcon(QIcon(":/Set.png"));
+    ui->PBSet->setIcon(QIcon(":/image/Set.png"));
     ui->PBSet->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
 
-    ui->PBClose->setIcon(QIcon(":/Close.png"));
+    ui->PBClose->setIcon(QIcon(":/image/Close.png"));
     ui->PBClose->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
 
     // 创建系统托盘图标
     trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(QIcon(":/icon.ico"));
+    trayIcon->setIcon(QIcon(":/image/icon.ico"));
     trayIcon->setVisible(true);
     connect(trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated);
     trayIconMenu = new QMenu(this);
@@ -48,15 +48,15 @@ MainWindow::MainWindow(QWidget *parent)
     trayIcon->setContextMenu(trayIconMenu);
 
     // 设置按钮
-    ui->PBmini->setIcon(QIcon(":/mini2.png"));
+    ui->PBmini->setIcon(QIcon(":/image/mini2.png"));
     ui->PBmini->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
     ui->PBmini->setStyleSheet("QPushButton { background-color: white; color: black; }");
 
-    ui->PBSet->setIcon(QIcon(":/Set2.png"));
+    ui->PBSet->setIcon(QIcon(":/image/Set2.png"));
     ui->PBSet->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
     ui->PBSet->setStyleSheet("QPushButton { background-color: white; color: black; }");
 
-    ui->PBClose->setIcon(QIcon(":/Close2.png"));
+    ui->PBClose->setIcon(QIcon(":/image/Close2.png"));
     ui->PBClose->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
     ui->PBClose->setStyleSheet("QPushButton { background-color: white; color: black; }");
 
