@@ -6,7 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>1004</width>
+=======
+    <width>1079</width>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
     <height>755</height>
    </rect>
   </property>
@@ -72,7 +76,11 @@
    <widget class="QPushButton" name="PBmini">
     <property name="geometry">
      <rect>
+<<<<<<< HEAD
       <x>900</x>
+=======
+      <x>970</x>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <y>10</y>
       <width>31</width>
       <height>24</height>
@@ -85,7 +93,11 @@
    <widget class="QPushButton" name="PBSet">
     <property name="geometry">
      <rect>
+<<<<<<< HEAD
       <x>930</x>
+=======
+      <x>1000</x>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <y>10</y>
       <width>31</width>
       <height>24</height>
@@ -98,7 +110,11 @@
    <widget class="QPushButton" name="PBClose">
     <property name="geometry">
      <rect>
+<<<<<<< HEAD
       <x>960</x>
+=======
+      <x>1030</x>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <y>10</y>
       <width>31</width>
       <height>24</height>
@@ -140,16 +156,26 @@
       <x>30</x>
       <y>120</y>
       <width>441</width>
+<<<<<<< HEAD
       <height>381</height>
+=======
+      <height>391</height>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="PB_clearInfo">
     <property name="geometry">
      <rect>
+<<<<<<< HEAD
       <x>30</x>
       <y>510</y>
       <width>441</width>
+=======
+      <x>420</x>
+      <y>520</y>
+      <width>51</width>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <height>25</height>
      </rect>
     </property>
@@ -321,7 +347,11 @@
      <rect>
       <x>490</x>
       <y>120</y>
+<<<<<<< HEAD
       <width>501</width>
+=======
+      <width>571</width>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <height>581</height>
      </rect>
     </property>
@@ -333,11 +363,38 @@
       <rect>
        <x>0</x>
        <y>0</y>
+<<<<<<< HEAD
        <width>499</width>
+=======
+       <width>569</width>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
        <height>579</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+<<<<<<< HEAD
+=======
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>快捷指令</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_4">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>备注</string>
+        </property>
+       </widget>
+      </item>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <item row="1" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
@@ -390,6 +447,7 @@
         </item>
        </layout>
       </item>
+<<<<<<< HEAD
       <item row="1" column="2">
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
@@ -462,6 +520,8 @@
         </property>
        </widget>
       </item>
+=======
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
       <item row="1" column="1">
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
@@ -674,6 +734,61 @@
         </item>
        </layout>
       </item>
+<<<<<<< HEAD
+=======
+      <item row="1" column="2">
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_1"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_2"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_3"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_4"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_5"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_6"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_7"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_8"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_9"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_10"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_11"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_12"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_13"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_14"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_15"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_tips_16"/>
+        </item>
+       </layout>
+      </item>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
      </layout>
     </widget>
    </widget>
@@ -683,7 +798,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>1004</width>
+=======
+     <width>1079</width>
+>>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
      <height>21</height>
     </rect>
    </property>
