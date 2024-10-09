@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QListWidget>
 #include <QMessageBox>
@@ -14,13 +14,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_totalFastContrl(36)
 {
     ui->setupUi(this);
     m_SocketClient.setMainInstan(this);
     m_SerialCom.setMainInstan(this);
     m_setWidget = new Setting(&m_SerialCom);
-
-    loadSettings(); // 读取配置文件
 
     setWindowFlags(Qt::FramelessWindowHint);  // 禁用标题栏
     setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
@@ -146,8 +145,44 @@ MainWindow::MainWindow(QWidget *parent)
         m_SocketClient.connectToHost(ui->lineEdit_ip->text(), ui->lineEdit_port->text().toInt());
     });
 
-    // 快捷指令
-    for (int i = 1; i <= 16; ++i) {
+    //动态添加上更多的快捷指令
+    int addNum = 20;
+    for (int i = 0; i < addNum; ++i) {
+        QLineEdit *newLineEdit = new QLineEdit(this);   // 创建一个新的 QLineEdit 对象
+        //newLineEdit->setPlaceholderText(QString("lineEdit_s%1").arg(i + 17));
+        newLineEdit->setObjectName(QString("lineEdit_s%1").arg(i + 17));
+        ui->verticalLayout_7->addWidget(newLineEdit);
+        qDebug() << "newObj" << newLineEdit->objectName() << "-";
+    }
+    for (int i = 0; i < addNum; ++i) {
+        QPushButton *newButton = new QPushButton(this);  // 创建一个新的 QPushButton 对象
+        newButton->setText(QString("发送"));
+        newButton->setObjectName(QString("PB_send_%1").arg(i + 17));
+        newButton->setFixedHeight(22);
+
+        // 可以为按钮绑定一个信号槽，例如点击按钮后执行某些操作
+        connect(newButton, &QPushButton::clicked, this, [i]() {
+            qDebug() << "Button PB_send_" << (i + 17) << " clicked!";
+        });
+
+        ui->verticalLayout_8->addWidget(newButton);
+        qDebug() << "newObj" << newButton->objectName() << "-";
+    }
+    for (int i = 0; i < addNum; ++i) {
+        QLineEdit *newLineEdit = new QLineEdit(this);  // 创建一个新的 QLineEdit 对象
+        //newLineEdit->setPlaceholderText(QString("lineEdit_tips_%1").arg(i + 17));
+        newLineEdit->setObjectName(QString("lineEdit_tips_%1").arg(i + 17));
+
+        // 设置其他属性，如大小、样式等（可选）
+        //newLineEdit->setFixedSize(200, 30);  // 设置固定大小
+        //newLineEdit->setStyleSheet("background-color: lightyellow;");
+        ui->verticalLayout_9->addWidget(newLineEdit);
+        qDebug() << "newObj" << newLineEdit->objectName() << "-";
+    }
+
+
+    // 连接快捷指令发送按钮
+    for (int i = 1; i <= m_totalFastContrl; ++i) {
         QPushButton *button = findChild<QPushButton *>(QString("PB_send_%1").arg(i));
         QLineEdit *lineEdit = findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i));
 
@@ -161,11 +196,15 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
+
     // 连接串口数据
     ConnectRecev();
 
     // 模拟校准数据输入
     setupConnections();
+
+    // 读取配置文件
+    loadSettings();
 }
 
 MainWindow::~MainWindow()
@@ -335,7 +374,7 @@ void MainWindow::loadSettings() {
     ui->lineEdit_ip->setText(settings.value("lineEdit_ip", "").toString());
     ui->lineEdit_port->setText(settings.value("lineEdit_port", "").toString());
 
-    for (int i = 1; i <= 16; ++i) {
+    for (int i = 1; i <= m_totalFastContrl; ++i) {
         findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i))->setText(settings.value(QString("lineEdit_s%1").arg(i), "").toString());
         findChild<QLineEdit *>(QString("lineEdit_tips_%1").arg(i))->setText(settings.value(QString("lineEdit_tips_%1").arg(i), "").toString());
     }
@@ -351,7 +390,7 @@ void MainWindow::saveSettings() {
     settings.setValue("lineEdit_ip", ui->lineEdit_ip->text());
     settings.setValue("lineEdit_port", ui->lineEdit_port->text());
 
-    for (int i = 1; i <= 16; ++i) {
+    for (int i = 1; i <= m_totalFastContrl; ++i) {
         settings.setValue(QString("lineEdit_s%1").arg(i), findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i))->text());
         settings.setValue(QString("lineEdit_tips_%1").arg(i), findChild<QLineEdit *>(QString("lineEdit_tips_%1").arg(i))->text());
     }

@@ -12,11 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
@@ -50,28 +52,12 @@ public:
     QLabel *label_16;
     QPushButton *PB_Connect;
     QPushButton *PB_stopSend;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents_3;
+    QGridLayout *gridLayout;
     QLabel *label_3;
     QLabel *label_4;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout;
-    QLineEdit *lineEdit_tips_1;
-    QLineEdit *lineEdit_tips_2;
-    QLineEdit *lineEdit_tips_3;
-    QLineEdit *lineEdit_tips_4;
-    QLineEdit *lineEdit_tips_5;
-    QLineEdit *lineEdit_tips_6;
-    QLineEdit *lineEdit_tips_7;
-    QLineEdit *lineEdit_tips_8;
-    QLineEdit *lineEdit_tips_9;
-    QLineEdit *lineEdit_tips_10;
-    QLineEdit *lineEdit_tips_11;
-    QLineEdit *lineEdit_tips_12;
-    QLineEdit *lineEdit_tips_13;
-    QLineEdit *lineEdit_tips_14;
-    QLineEdit *lineEdit_tips_15;
-    QLineEdit *lineEdit_tips_16;
-    QWidget *widget1;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_7;
     QLineEdit *lineEdit_s1;
     QLineEdit *lineEdit_s2;
     QLineEdit *lineEdit_s3;
@@ -88,8 +74,7 @@ public:
     QLineEdit *lineEdit_s14;
     QLineEdit *lineEdit_s15;
     QLineEdit *lineEdit_s16;
-    QWidget *widget2;
-    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_8;
     QPushButton *PB_send_1;
     QPushButton *PB_send_2;
     QPushButton *PB_send_3;
@@ -106,6 +91,23 @@ public:
     QPushButton *PB_send_14;
     QPushButton *PB_send_15;
     QPushButton *PB_send_16;
+    QVBoxLayout *verticalLayout_9;
+    QLineEdit *lineEdit_tips_1;
+    QLineEdit *lineEdit_tips_2;
+    QLineEdit *lineEdit_tips_3;
+    QLineEdit *lineEdit_tips_4;
+    QLineEdit *lineEdit_tips_5;
+    QLineEdit *lineEdit_tips_6;
+    QLineEdit *lineEdit_tips_7;
+    QLineEdit *lineEdit_tips_8;
+    QLineEdit *lineEdit_tips_9;
+    QLineEdit *lineEdit_tips_10;
+    QLineEdit *lineEdit_tips_11;
+    QLineEdit *lineEdit_tips_12;
+    QLineEdit *lineEdit_tips_13;
+    QLineEdit *lineEdit_tips_14;
+    QLineEdit *lineEdit_tips_15;
+    QLineEdit *lineEdit_tips_16;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -113,12 +115,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(784, 689);
+        MainWindow->resize(1079, 755);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(350, 10, 101, 31));
+        label_11->setGeometry(QRect(440, 10, 211, 31));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -139,13 +141,13 @@ public:
         label_14->setSizePolicy(sizePolicy);
         PBmini = new QPushButton(centralwidget);
         PBmini->setObjectName(QString::fromUtf8("PBmini"));
-        PBmini->setGeometry(QRect(670, 10, 31, 24));
+        PBmini->setGeometry(QRect(970, 10, 31, 24));
         PBSet = new QPushButton(centralwidget);
         PBSet->setObjectName(QString::fromUtf8("PBSet"));
-        PBSet->setGeometry(QRect(700, 10, 31, 24));
+        PBSet->setGeometry(QRect(1000, 10, 31, 24));
         PBClose = new QPushButton(centralwidget);
         PBClose->setObjectName(QString::fromUtf8("PBClose"));
-        PBClose->setGeometry(QRect(730, 10, 31, 24));
+        PBClose->setGeometry(QRect(1030, 10, 31, 24));
         PB_OpenPort = new QPushButton(centralwidget);
         PB_OpenPort->setObjectName(QString::fromUtf8("PB_OpenPort"));
         PB_OpenPort->setGeometry(QRect(210, 57, 61, 25));
@@ -154,318 +156,346 @@ public:
         PB_ClosePort->setGeometry(QRect(290, 57, 71, 25));
         textEdit_rec = new QTextEdit(centralwidget);
         textEdit_rec->setObjectName(QString::fromUtf8("textEdit_rec"));
-        textEdit_rec->setGeometry(QRect(30, 120, 341, 331));
+        textEdit_rec->setGeometry(QRect(30, 120, 441, 391));
         PB_clearInfo = new QPushButton(centralwidget);
         PB_clearInfo->setObjectName(QString::fromUtf8("PB_clearInfo"));
-        PB_clearInfo->setGeometry(QRect(320, 460, 51, 25));
+        PB_clearInfo->setGeometry(QRect(420, 520, 51, 25));
         PB_read = new QPushButton(centralwidget);
         PB_read->setObjectName(QString::fromUtf8("PB_read"));
-        PB_read->setGeometry(QRect(130, 600, 81, 30));
+        PB_read->setGeometry(QRect(130, 665, 81, 30));
         PB_testIn = new QPushButton(centralwidget);
         PB_testIn->setObjectName(QString::fromUtf8("PB_testIn"));
-        PB_testIn->setGeometry(QRect(30, 600, 81, 30));
+        PB_testIn->setGeometry(QRect(30, 665, 81, 30));
         PB_send = new QPushButton(centralwidget);
         PB_send->setObjectName(QString::fromUtf8("PB_send"));
-        PB_send->setGeometry(QRect(320, 600, 51, 30));
+        PB_send->setGeometry(QRect(420, 665, 51, 30));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 100, 53, 15));
         textEdit_send = new QTextEdit(centralwidget);
         textEdit_send->setObjectName(QString::fromUtf8("textEdit_send"));
-        textEdit_send->setGeometry(QRect(30, 505, 341, 81));
+        textEdit_send->setGeometry(QRect(30, 570, 441, 81));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(30, 485, 53, 15));
+        label_2->setGeometry(QRect(30, 550, 53, 15));
         lineEdit_ip = new QLineEdit(centralwidget);
         lineEdit_ip->setObjectName(QString::fromUtf8("lineEdit_ip"));
-        lineEdit_ip->setGeometry(QRect(410, 60, 151, 23));
+        lineEdit_ip->setGeometry(QRect(710, 60, 151, 23));
         label_15 = new QLabel(centralwidget);
         label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(390, 55, 21, 31));
+        label_15->setGeometry(QRect(690, 55, 21, 31));
         sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
         label_15->setSizePolicy(sizePolicy);
         lineEdit_port = new QLineEdit(centralwidget);
         lineEdit_port->setObjectName(QString::fromUtf8("lineEdit_port"));
-        lineEdit_port->setGeometry(QRect(612, 60, 71, 23));
+        lineEdit_port->setGeometry(QRect(912, 60, 71, 23));
         label_16 = new QLabel(centralwidget);
         label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setGeometry(QRect(580, 55, 31, 31));
+        label_16->setGeometry(QRect(880, 55, 31, 31));
         sizePolicy.setHeightForWidth(label_16->sizePolicy().hasHeightForWidth());
         label_16->setSizePolicy(sizePolicy);
         PB_Connect = new QPushButton(centralwidget);
         PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
-        PB_Connect->setGeometry(QRect(700, 58, 61, 25));
+        PB_Connect->setGeometry(QRect(1000, 58, 61, 25));
         PB_stopSend = new QPushButton(centralwidget);
         PB_stopSend->setObjectName(QString::fromUtf8("PB_stopSend"));
-        PB_stopSend->setGeometry(QRect(230, 600, 81, 30));
-        label_3 = new QLabel(centralwidget);
+        PB_stopSend->setGeometry(QRect(230, 665, 81, 30));
+        scrollArea = new QScrollArea(centralwidget);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setGeometry(QRect(490, 120, 571, 581));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents_3 = new QWidget();
+        scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 569, 579));
+        gridLayout = new QGridLayout(scrollAreaWidgetContents_3);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label_3 = new QLabel(scrollAreaWidgetContents_3);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(390, 100, 53, 15));
-        label_4 = new QLabel(centralwidget);
+
+        gridLayout->addWidget(label_3, 0, 0, 1, 1);
+
+        label_4 = new QLabel(scrollAreaWidgetContents_3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(620, 100, 53, 15));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(620, 120, 141, 521));
-        verticalLayout = new QVBoxLayout(widget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        lineEdit_tips_1 = new QLineEdit(widget);
-        lineEdit_tips_1->setObjectName(QString::fromUtf8("lineEdit_tips_1"));
+        label_4->setMaximumSize(QSize(30, 22));
 
-        verticalLayout->addWidget(lineEdit_tips_1);
+        gridLayout->addWidget(label_4, 0, 2, 1, 1);
 
-        lineEdit_tips_2 = new QLineEdit(widget);
-        lineEdit_tips_2->setObjectName(QString::fromUtf8("lineEdit_tips_2"));
-
-        verticalLayout->addWidget(lineEdit_tips_2);
-
-        lineEdit_tips_3 = new QLineEdit(widget);
-        lineEdit_tips_3->setObjectName(QString::fromUtf8("lineEdit_tips_3"));
-
-        verticalLayout->addWidget(lineEdit_tips_3);
-
-        lineEdit_tips_4 = new QLineEdit(widget);
-        lineEdit_tips_4->setObjectName(QString::fromUtf8("lineEdit_tips_4"));
-
-        verticalLayout->addWidget(lineEdit_tips_4);
-
-        lineEdit_tips_5 = new QLineEdit(widget);
-        lineEdit_tips_5->setObjectName(QString::fromUtf8("lineEdit_tips_5"));
-
-        verticalLayout->addWidget(lineEdit_tips_5);
-
-        lineEdit_tips_6 = new QLineEdit(widget);
-        lineEdit_tips_6->setObjectName(QString::fromUtf8("lineEdit_tips_6"));
-
-        verticalLayout->addWidget(lineEdit_tips_6);
-
-        lineEdit_tips_7 = new QLineEdit(widget);
-        lineEdit_tips_7->setObjectName(QString::fromUtf8("lineEdit_tips_7"));
-
-        verticalLayout->addWidget(lineEdit_tips_7);
-
-        lineEdit_tips_8 = new QLineEdit(widget);
-        lineEdit_tips_8->setObjectName(QString::fromUtf8("lineEdit_tips_8"));
-
-        verticalLayout->addWidget(lineEdit_tips_8);
-
-        lineEdit_tips_9 = new QLineEdit(widget);
-        lineEdit_tips_9->setObjectName(QString::fromUtf8("lineEdit_tips_9"));
-
-        verticalLayout->addWidget(lineEdit_tips_9);
-
-        lineEdit_tips_10 = new QLineEdit(widget);
-        lineEdit_tips_10->setObjectName(QString::fromUtf8("lineEdit_tips_10"));
-
-        verticalLayout->addWidget(lineEdit_tips_10);
-
-        lineEdit_tips_11 = new QLineEdit(widget);
-        lineEdit_tips_11->setObjectName(QString::fromUtf8("lineEdit_tips_11"));
-
-        verticalLayout->addWidget(lineEdit_tips_11);
-
-        lineEdit_tips_12 = new QLineEdit(widget);
-        lineEdit_tips_12->setObjectName(QString::fromUtf8("lineEdit_tips_12"));
-
-        verticalLayout->addWidget(lineEdit_tips_12);
-
-        lineEdit_tips_13 = new QLineEdit(widget);
-        lineEdit_tips_13->setObjectName(QString::fromUtf8("lineEdit_tips_13"));
-
-        verticalLayout->addWidget(lineEdit_tips_13);
-
-        lineEdit_tips_14 = new QLineEdit(widget);
-        lineEdit_tips_14->setObjectName(QString::fromUtf8("lineEdit_tips_14"));
-
-        verticalLayout->addWidget(lineEdit_tips_14);
-
-        lineEdit_tips_15 = new QLineEdit(widget);
-        lineEdit_tips_15->setObjectName(QString::fromUtf8("lineEdit_tips_15"));
-
-        verticalLayout->addWidget(lineEdit_tips_15);
-
-        lineEdit_tips_16 = new QLineEdit(widget);
-        lineEdit_tips_16->setObjectName(QString::fromUtf8("lineEdit_tips_16"));
-
-        verticalLayout->addWidget(lineEdit_tips_16);
-
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(390, 120, 135, 521));
-        verticalLayout_2 = new QVBoxLayout(widget1);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        lineEdit_s1 = new QLineEdit(widget1);
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        lineEdit_s1 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s1->setObjectName(QString::fromUtf8("lineEdit_s1"));
 
-        verticalLayout_2->addWidget(lineEdit_s1);
+        verticalLayout_7->addWidget(lineEdit_s1);
 
-        lineEdit_s2 = new QLineEdit(widget1);
+        lineEdit_s2 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s2->setObjectName(QString::fromUtf8("lineEdit_s2"));
 
-        verticalLayout_2->addWidget(lineEdit_s2);
+        verticalLayout_7->addWidget(lineEdit_s2);
 
-        lineEdit_s3 = new QLineEdit(widget1);
+        lineEdit_s3 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s3->setObjectName(QString::fromUtf8("lineEdit_s3"));
 
-        verticalLayout_2->addWidget(lineEdit_s3);
+        verticalLayout_7->addWidget(lineEdit_s3);
 
-        lineEdit_s4 = new QLineEdit(widget1);
+        lineEdit_s4 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s4->setObjectName(QString::fromUtf8("lineEdit_s4"));
 
-        verticalLayout_2->addWidget(lineEdit_s4);
+        verticalLayout_7->addWidget(lineEdit_s4);
 
-        lineEdit_s5 = new QLineEdit(widget1);
+        lineEdit_s5 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s5->setObjectName(QString::fromUtf8("lineEdit_s5"));
 
-        verticalLayout_2->addWidget(lineEdit_s5);
+        verticalLayout_7->addWidget(lineEdit_s5);
 
-        lineEdit_s6 = new QLineEdit(widget1);
+        lineEdit_s6 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s6->setObjectName(QString::fromUtf8("lineEdit_s6"));
 
-        verticalLayout_2->addWidget(lineEdit_s6);
+        verticalLayout_7->addWidget(lineEdit_s6);
 
-        lineEdit_s7 = new QLineEdit(widget1);
+        lineEdit_s7 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s7->setObjectName(QString::fromUtf8("lineEdit_s7"));
 
-        verticalLayout_2->addWidget(lineEdit_s7);
+        verticalLayout_7->addWidget(lineEdit_s7);
 
-        lineEdit_s8 = new QLineEdit(widget1);
+        lineEdit_s8 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s8->setObjectName(QString::fromUtf8("lineEdit_s8"));
 
-        verticalLayout_2->addWidget(lineEdit_s8);
+        verticalLayout_7->addWidget(lineEdit_s8);
 
-        lineEdit_s9 = new QLineEdit(widget1);
+        lineEdit_s9 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s9->setObjectName(QString::fromUtf8("lineEdit_s9"));
 
-        verticalLayout_2->addWidget(lineEdit_s9);
+        verticalLayout_7->addWidget(lineEdit_s9);
 
-        lineEdit_s10 = new QLineEdit(widget1);
+        lineEdit_s10 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s10->setObjectName(QString::fromUtf8("lineEdit_s10"));
 
-        verticalLayout_2->addWidget(lineEdit_s10);
+        verticalLayout_7->addWidget(lineEdit_s10);
 
-        lineEdit_s11 = new QLineEdit(widget1);
+        lineEdit_s11 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s11->setObjectName(QString::fromUtf8("lineEdit_s11"));
 
-        verticalLayout_2->addWidget(lineEdit_s11);
+        verticalLayout_7->addWidget(lineEdit_s11);
 
-        lineEdit_s12 = new QLineEdit(widget1);
+        lineEdit_s12 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s12->setObjectName(QString::fromUtf8("lineEdit_s12"));
 
-        verticalLayout_2->addWidget(lineEdit_s12);
+        verticalLayout_7->addWidget(lineEdit_s12);
 
-        lineEdit_s13 = new QLineEdit(widget1);
+        lineEdit_s13 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s13->setObjectName(QString::fromUtf8("lineEdit_s13"));
 
-        verticalLayout_2->addWidget(lineEdit_s13);
+        verticalLayout_7->addWidget(lineEdit_s13);
 
-        lineEdit_s14 = new QLineEdit(widget1);
+        lineEdit_s14 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s14->setObjectName(QString::fromUtf8("lineEdit_s14"));
 
-        verticalLayout_2->addWidget(lineEdit_s14);
+        verticalLayout_7->addWidget(lineEdit_s14);
 
-        lineEdit_s15 = new QLineEdit(widget1);
+        lineEdit_s15 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s15->setObjectName(QString::fromUtf8("lineEdit_s15"));
 
-        verticalLayout_2->addWidget(lineEdit_s15);
+        verticalLayout_7->addWidget(lineEdit_s15);
 
-        lineEdit_s16 = new QLineEdit(widget1);
+        lineEdit_s16 = new QLineEdit(scrollAreaWidgetContents_3);
         lineEdit_s16->setObjectName(QString::fromUtf8("lineEdit_s16"));
 
-        verticalLayout_2->addWidget(lineEdit_s16);
+        verticalLayout_7->addWidget(lineEdit_s16);
 
-        widget2 = new QWidget(centralwidget);
-        widget2->setObjectName(QString::fromUtf8("widget2"));
-        widget2->setGeometry(QRect(530, 120, 77, 521));
-        verticalLayout_3 = new QVBoxLayout(widget2);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        PB_send_1 = new QPushButton(widget2);
+
+        gridLayout->addLayout(verticalLayout_7, 1, 0, 1, 1);
+
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        PB_send_1 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_1->setObjectName(QString::fromUtf8("PB_send_1"));
+        PB_send_1->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_1);
+        verticalLayout_8->addWidget(PB_send_1);
 
-        PB_send_2 = new QPushButton(widget2);
+        PB_send_2 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_2->setObjectName(QString::fromUtf8("PB_send_2"));
+        PB_send_2->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_2);
+        verticalLayout_8->addWidget(PB_send_2);
 
-        PB_send_3 = new QPushButton(widget2);
+        PB_send_3 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_3->setObjectName(QString::fromUtf8("PB_send_3"));
+        PB_send_3->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_3);
+        verticalLayout_8->addWidget(PB_send_3);
 
-        PB_send_4 = new QPushButton(widget2);
+        PB_send_4 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_4->setObjectName(QString::fromUtf8("PB_send_4"));
+        PB_send_4->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_4);
+        verticalLayout_8->addWidget(PB_send_4);
 
-        PB_send_5 = new QPushButton(widget2);
+        PB_send_5 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_5->setObjectName(QString::fromUtf8("PB_send_5"));
+        PB_send_5->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_5);
+        verticalLayout_8->addWidget(PB_send_5);
 
-        PB_send_6 = new QPushButton(widget2);
+        PB_send_6 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_6->setObjectName(QString::fromUtf8("PB_send_6"));
+        PB_send_6->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_6);
+        verticalLayout_8->addWidget(PB_send_6);
 
-        PB_send_7 = new QPushButton(widget2);
+        PB_send_7 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_7->setObjectName(QString::fromUtf8("PB_send_7"));
+        PB_send_7->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_7);
+        verticalLayout_8->addWidget(PB_send_7);
 
-        PB_send_8 = new QPushButton(widget2);
+        PB_send_8 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_8->setObjectName(QString::fromUtf8("PB_send_8"));
+        PB_send_8->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_8);
+        verticalLayout_8->addWidget(PB_send_8);
 
-        PB_send_9 = new QPushButton(widget2);
+        PB_send_9 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_9->setObjectName(QString::fromUtf8("PB_send_9"));
+        PB_send_9->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_9);
+        verticalLayout_8->addWidget(PB_send_9);
 
-        PB_send_10 = new QPushButton(widget2);
+        PB_send_10 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_10->setObjectName(QString::fromUtf8("PB_send_10"));
+        PB_send_10->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_10);
+        verticalLayout_8->addWidget(PB_send_10);
 
-        PB_send_11 = new QPushButton(widget2);
+        PB_send_11 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_11->setObjectName(QString::fromUtf8("PB_send_11"));
+        PB_send_11->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_11);
+        verticalLayout_8->addWidget(PB_send_11);
 
-        PB_send_12 = new QPushButton(widget2);
+        PB_send_12 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_12->setObjectName(QString::fromUtf8("PB_send_12"));
+        PB_send_12->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_12);
+        verticalLayout_8->addWidget(PB_send_12);
 
-        PB_send_13 = new QPushButton(widget2);
+        PB_send_13 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_13->setObjectName(QString::fromUtf8("PB_send_13"));
+        PB_send_13->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_13);
+        verticalLayout_8->addWidget(PB_send_13);
 
-        PB_send_14 = new QPushButton(widget2);
+        PB_send_14 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_14->setObjectName(QString::fromUtf8("PB_send_14"));
+        PB_send_14->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_14);
+        verticalLayout_8->addWidget(PB_send_14);
 
-        PB_send_15 = new QPushButton(widget2);
+        PB_send_15 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_15->setObjectName(QString::fromUtf8("PB_send_15"));
+        PB_send_15->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_15);
+        verticalLayout_8->addWidget(PB_send_15);
 
-        PB_send_16 = new QPushButton(widget2);
+        PB_send_16 = new QPushButton(scrollAreaWidgetContents_3);
         PB_send_16->setObjectName(QString::fromUtf8("PB_send_16"));
+        PB_send_16->setMinimumSize(QSize(0, 22));
 
-        verticalLayout_3->addWidget(PB_send_16);
+        verticalLayout_8->addWidget(PB_send_16);
 
+
+        gridLayout->addLayout(verticalLayout_8, 1, 1, 1, 1);
+
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        lineEdit_tips_1 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_1->setObjectName(QString::fromUtf8("lineEdit_tips_1"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_1);
+
+        lineEdit_tips_2 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_2->setObjectName(QString::fromUtf8("lineEdit_tips_2"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_2);
+
+        lineEdit_tips_3 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_3->setObjectName(QString::fromUtf8("lineEdit_tips_3"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_3);
+
+        lineEdit_tips_4 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_4->setObjectName(QString::fromUtf8("lineEdit_tips_4"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_4);
+
+        lineEdit_tips_5 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_5->setObjectName(QString::fromUtf8("lineEdit_tips_5"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_5);
+
+        lineEdit_tips_6 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_6->setObjectName(QString::fromUtf8("lineEdit_tips_6"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_6);
+
+        lineEdit_tips_7 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_7->setObjectName(QString::fromUtf8("lineEdit_tips_7"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_7);
+
+        lineEdit_tips_8 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_8->setObjectName(QString::fromUtf8("lineEdit_tips_8"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_8);
+
+        lineEdit_tips_9 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_9->setObjectName(QString::fromUtf8("lineEdit_tips_9"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_9);
+
+        lineEdit_tips_10 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_10->setObjectName(QString::fromUtf8("lineEdit_tips_10"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_10);
+
+        lineEdit_tips_11 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_11->setObjectName(QString::fromUtf8("lineEdit_tips_11"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_11);
+
+        lineEdit_tips_12 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_12->setObjectName(QString::fromUtf8("lineEdit_tips_12"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_12);
+
+        lineEdit_tips_13 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_13->setObjectName(QString::fromUtf8("lineEdit_tips_13"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_13);
+
+        lineEdit_tips_14 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_14->setObjectName(QString::fromUtf8("lineEdit_tips_14"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_14);
+
+        lineEdit_tips_15 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_15->setObjectName(QString::fromUtf8("lineEdit_tips_15"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_15);
+
+        lineEdit_tips_16 = new QLineEdit(scrollAreaWidgetContents_3);
+        lineEdit_tips_16->setObjectName(QString::fromUtf8("lineEdit_tips_16"));
+
+        verticalLayout_9->addWidget(lineEdit_tips_16);
+
+
+        gridLayout->addLayout(verticalLayout_9, 1, 2, 1, 1);
+
+        scrollArea->setWidget(scrollAreaWidgetContents_3);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 784, 21));
+        menubar->setGeometry(QRect(0, 0, 1079, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -479,7 +509,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "\346\265\213\350\257\225\345\267\245\345\205\267", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "\345\212\237\347\216\207\350\256\241\350\260\203\350\257\225\345\267\245\345\205\267", nullptr));
         label_14->setText(QCoreApplication::translate("MainWindow", "COM\357\274\232", nullptr));
         PBmini->setText(QString());
         PBSet->setText(QString());

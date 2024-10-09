@@ -1,4 +1,4 @@
-#include "worker.h"
+﻿#include "worker.h"
 
 void Worker::doWork()
 {
@@ -23,8 +23,8 @@ void Worker::doWork()
 
     QByteArray temp[BUFSIZE][3];
     for (int i = 0; i < BUFSIZE; ++i) {
-        temp[i][0] = "FRE_CH1=" + QByteArray::number(2000 + i * 100);       // 频率通道从2000开始，每次增加100
-        temp[i][1] = "POWER_CH1=" + QByteArray::number(i);                      // 功率从0开始，每次增加1
+        temp[i][0] = "FREQUE=" + QByteArray::number(2000 + i * 100);       // 频率通道从2000开始，每次增加100
+        temp[i][1] = "POWER=" + QByteArray::number(i);                      // 功率从0开始，每次增加1
         temp[i][2] = "TEST_ADC=" + QByteArray::number(109 + i * 10);        // ADC值从109开始，每次增加10
     }
 
@@ -49,7 +49,6 @@ void Worker::doWork()
         if(method == 1){
             m_SerialCom->sendData("CH1_V?");
         }else if(method == 2){
-            //m_SocketClient->sendData("CH1_V?");
             emit sig_sockeSendData("CH1_V?");
         }
 
@@ -60,8 +59,7 @@ void Worker::doWork()
             i = BUFSIZE;
         }
     }
-
-
+ 
     // 衰减路径数据生成与发送
     QThread::msleep(1000);
     if(method == 1){
@@ -72,8 +70,8 @@ void Worker::doWork()
     }
 
     for (int i = 0; i < BUFSIZE; ++i) {
-        temp[i][0] = "FRE_CH1=" + QByteArray::number(600 + i * 100);       // 频率通道从2000开始，每次增加100
-        temp[i][1] = "POWER_CH1=" + QByteArray::number(i+66);
+        temp[i][0] = "FREQUE=" + QByteArray::number(600 + i * 100);       // 频率通道从2000开始，每次增加100
+        temp[i][1] = "POWER=" + QByteArray::number(i+66);
         temp[i][2] = "TEST_ADC=" + QByteArray::number(34 + i * 10);        // ADC值从109开始，每次增加10
     }
     QThread::msleep(100);
