@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -124,6 +124,7 @@ private:
     QStringList m_Portlist;
     QString m_CurretProt;
     Setting *m_setWidget;
+    int m_totalFastContrl;
 
     // 串口循环发送线程
     Worker *worker = nullptr;

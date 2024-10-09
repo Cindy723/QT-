@@ -85,6 +85,7 @@ void Setting::addAboutInfoToTab()
                                     "<h2>测试工具</h2>"
                                     "<p>软件描述: 本软件主要用于Uart和Socket通信</p>"
                                     "<p>开发者: 北京德辰科技股份有限公司 https://www.decentest.com/ </p>"
+                                    "<p>部门: 监测系统部 任春东</p>"
                                     "<p>版权所有 © 2024</p>"
                                     ), aboutTab); // 指定 aboutTab 作为父对象
     aboutLabel->setAlignment(Qt::AlignCenter);
