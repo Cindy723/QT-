@@ -14,11 +14,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-<<<<<<< HEAD
     , m_totalFastContrl(100)
-=======
-    , m_totalFastContrl(36)
->>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
 {
     ui->setupUi(this);
     m_SocketClient.setMainInstan(this);
@@ -150,21 +146,13 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     //动态添加上更多的快捷指令
-<<<<<<< HEAD
     int addNum = m_totalFastContrl - 16;
-=======
-    int addNum = 20;
->>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
     for (int i = 0; i < addNum; ++i) {
         QLineEdit *newLineEdit = new QLineEdit(this);   // 创建一个新的 QLineEdit 对象
         //newLineEdit->setPlaceholderText(QString("lineEdit_s%1").arg(i + 17));
         newLineEdit->setObjectName(QString("lineEdit_s%1").arg(i + 17));
         ui->verticalLayout_7->addWidget(newLineEdit);
-<<<<<<< HEAD
-        qDebug() << "newObj" << newLineEdit->objectName();
-=======
         qDebug() << "newObj" << newLineEdit->objectName() << "-";
->>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
     }
     for (int i = 0; i < addNum; ++i) {
         QPushButton *newButton = new QPushButton(this);  // 创建一个新的 QPushButton 对象
@@ -178,11 +166,7 @@ MainWindow::MainWindow(QWidget *parent)
         });
 
         ui->verticalLayout_8->addWidget(newButton);
-<<<<<<< HEAD
-        qDebug() << "newObj" << newButton->objectName();
-=======
         qDebug() << "newObj" << newButton->objectName() << "-";
->>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
     }
     for (int i = 0; i < addNum; ++i) {
         QLineEdit *newLineEdit = new QLineEdit(this);  // 创建一个新的 QLineEdit 对象
@@ -193,11 +177,7 @@ MainWindow::MainWindow(QWidget *parent)
         //newLineEdit->setFixedSize(200, 30);  // 设置固定大小
         //newLineEdit->setStyleSheet("background-color: lightyellow;");
         ui->verticalLayout_9->addWidget(newLineEdit);
-<<<<<<< HEAD
-        qDebug() << "newObj" << newLineEdit->objectName();
-=======
         qDebug() << "newObj" << newLineEdit->objectName() << "-";
->>>>>>> 29b14e86ad0e60f0a95aa1e23589d5665c5307e2
     }
 
 
