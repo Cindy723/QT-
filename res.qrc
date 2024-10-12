@@ -2,11 +2,10 @@
     <qresource prefix="/">
         <file>myStyle.qss</file>
         <file>myStyleRepte.qss</file>
-        <file>Close2.png</file>
-        <file>mini2.png</file>
-        <file>Set2.png</file>
-        <file>icon.ico</file>
-        <file>LOCK.png</file>
-        <file>UNLOCK.png</file>
+        <file>image/Close2.png</file>
+        <file>image/icon.ico</file>
+        <file>image/mini2.png</file>
+        <file>image/Set2.png</file>
+        <file>image/logo.png</file>
     </qresource>
 </RCC>

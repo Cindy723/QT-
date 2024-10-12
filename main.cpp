@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 //    styleFile.open(QFile::ReadOnly);
 //    QString styleSheet = QLatin1String(styleFile.readAll());
 //    a.setStyleSheet(styleSheet);
-    a.setWindowIcon(QIcon(":/icon.ico"));
+    a.setWindowIcon(QIcon(":/image/icon.ico"));
 
     MainWindow w;
     // w.setMinimumSize(1024, 640);

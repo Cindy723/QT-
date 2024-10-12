@@ -2,14 +2,24 @@
 #include <QMessageBox>
 #include <QThread>
 #include <vector>
+#include <Qtimer>
+#include "mainwindow.h"
 
 SerialCommunication::SerialCommunication(QObject *parent)
     : QObject(parent)
     ,m_bENRecev(false)
 {
     connect(&m_serialPort, &QSerialPort::readyRead, this, &SerialCommunication::slot_handleReadyRead);
-   // connect(&m_serialPort, SIGNAL(errorOccurred(QSerialPort::SerialPortError)), this, SLOT(slot_handleError(QSerialPort::SerialPortError)));
+    // connect(&m_serialPort, SIGNAL(errorOccurred(QSerialPort::SerialPortError)), this, SLOT(slot_handleError(QSerialPort::SerialPortError)));
+    m_timer = new QTimer(this);
+    m_timer->setSingleShot(true); // 确保定时器只触发一次
 
+    connect(m_timer, &QTimer::timeout, this, &SerialCommunication::onTimeout);
+}
+
+void SerialCommunication::setMainInstan(MainWindow *p)
+{
+    m_main = p;
 }
 
 SerialCommunication::~SerialCommunication()
@@ -24,7 +34,6 @@ bool comparePortNames(const QString &portName1, const QString &portName2) {
     QString number2 = portName2.mid(3);
     return number1.toInt() < number2.toInt();
 }
-
 
 QStringList SerialCommunication::SearchCom(){
     QSerialPortInfo portInfo;
@@ -62,7 +71,7 @@ bool SerialCommunication::openSerialPort(const QString &portName)
         return false;
     }
 
-    m_serialPort.setBaudRate(QSerialPort::Baud9600);
+    m_serialPort.setBaudRate(QSerialPort::Baud115200);
     m_serialPort.setDataBits(QSerialPort::Data8);
     m_serialPort.setParity(QSerialPort::NoParity);
     m_serialPort.setStopBits(QSerialPort::OneStop);
@@ -70,11 +79,13 @@ bool SerialCommunication::openSerialPort(const QString &portName)
     m_serialPort.setReadBufferSize(1); // 缓冲大小1，这样可以每个字节都进入槽函数，否则32字节一组
 
     m_port = portName;
+    m_bENRecev = true;
     return true;
 }
 
 void SerialCommunication::closeSerialPort()
 {
+    m_bENRecev = false;
     m_serialPort.close();
 }
 
@@ -83,6 +94,7 @@ bool SerialCommunication::sendData(QByteArray data)
     /// 注意 QByteArray byte("\xa1\xa2"); 这种方式初始化 QByteArray 时遇到00 就会认为发送结束
     /// char 数组中间有0x00 也认为发送结束。。
     PrintQByteArray("send(hex):", data);
+    data += '\n';
     qint64 bytesWritten = m_serialPort.write(data);
     m_serialPort.waitForReadyRead(m_invalidCommunicate);
     return bytesWritten != -1; //这里即便中途USB脱落也不会发送失败
@@ -98,30 +110,17 @@ void SerialCommunication::slot_handleReadyRead()
     if(m_bENRecev)
     {
         m_receivedData0 += m_serialPort.readAll();
-        if(m_receivedData0.size() == 2)
-        {
-            if(m_receivedData0.at(0) != char(0xa5) || m_receivedData0.at(1) != char(0x5a))
-            {
-                PrintQByteArray(QString("Received00 Size %1: ").arg(m_receivedData0.size()), m_receivedData0);
-                m_receivedData0.clear();
-                m_serialPort.clear();
-                closeSerialPort();
-                openSerialPort(m_port);
-                qDebug() << "数据头不匹配,重置缓存";
-                return;
-            }
-        }
-        else if(m_receivedData0.size() >= 5) // 收到长度信息了
-        {
-            if(m_receivedData0.size() >= m_receivedData0.at(4) + 6) // 一帧数据收完
-            {
-                //qDebug() << "一帧数据接收完成,触发信号,当前长度 " << m_receivedData0.size();
-                m_receivedData = m_receivedData0;
-                m_receivedData0.clear();
-                emit dataReceived(m_receivedData);
-            }
-        }
+        m_timer->start(m_timeoutInterval);
     }
+}
+
+void  SerialCommunication::onTimeout()
+{
+    // 超时触发，认为一帧数据接收结束
+    m_receivedData = m_receivedData0;
+    qDebug() << "Rec:" << m_receivedData;
+    m_receivedData0.clear();
+    emit dataReceived(m_receivedData);
 }
 
 void SerialCommunication::PrintQByteArray(QString msg, QByteArray arry)

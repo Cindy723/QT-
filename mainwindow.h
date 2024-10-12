@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -12,11 +12,20 @@
 #include <QRegion>
 #include <QPainter>
 #include <QSystemTrayIcon>
-#include <SerialCommunication.h>
+#include "SerialCommunication.h"
+#include "ui_mainwindow.h"
+#include <QDateTime>
+#include <QThread>
+#include <qDebug>
+#include "MySocketClient.h"
+#include "Worker.h"
+#include "setting.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+#define APPVERSION " Version 0.2 "
 
 class MainWindow : public QMainWindow
 {
@@ -28,11 +37,16 @@ public:
 
     // 串口通信对象
     SerialCommunication m_SerialCom;
+    MySocketClient m_SocketClient;
+    void setupConnections();
     void updateOperationResult(QString content);
 
     // 重写关闭事件处理函数
     void closeEvent(QCloseEvent *event) override;
     void ConnectRecev();
+
+    void setHistoryTextInfo(QString head, QString info);
+
     /* 界面拖动与圆角实现 */
 protected:
         void mousePressEvent(QMouseEvent *event) override {
@@ -53,15 +67,24 @@ protected:
 
         void paintEvent(QPaintEvent *event) override {
             QPainter painter(this);
-            // 设置圆角
-            painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
-            //QColor fillColor("#2E2E2E"); // 背景
+
+            // 设置抗锯齿
+            painter.setRenderHint(QPainter::Antialiasing);
+
+            // 背景颜色
             QColor fillColor("#f9f9f9");
             painter.setBrush(fillColor);
             painter.setPen(Qt::transparent);
+
+            // 绘制圆角矩形
             QRect rect = this->rect();
             rect.setWidth(rect.width() - 1);
             rect.setHeight(rect.height() - 1);
+            painter.drawRoundedRect(rect, 15, 15);
+
+            // 绘制边界线
+            QColor borderColor("#E94560"); // 边界线颜色
+            painter.setPen(QPen(borderColor, 1)); // 设置边界线颜色和宽度
             painter.drawRoundedRect(rect, 15, 15);
 
             // 添加标题横线
@@ -97,16 +120,27 @@ private:
         // 处理托盘图标点击事件
         void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui = nullptr;
     QStringList m_Portlist;
     QString m_CurretProt;
+    Setting *m_setWidget;
+    int m_totalFastContrl;
 
-    QStatusBar *statusBar;
-    QLabel *Lable_currentOperation; // Label for current operation
-    QLabel *Lable_OperationrResult; // Label for operation result
-    QLabel *Lable_softwareVersion; // Label for software version
+    // 串口循环发送线程
+    Worker *worker = nullptr;
+    QThread *thread = nullptr;
+
+    QStatusBar *statusBar = nullptr;
+    QLabel *Lable_currentOperation = nullptr; // Label for current operation
+    QLabel *Lable_OperationrResult = nullptr; // Label for operation result
+    QLabel *Lable_softwareVersion = nullptr; // Label for software version
+    void checkMethodAndSendFun(QByteArray byteArray);
+    void loadSettings();
+    void saveSettings();
 //signals:
 public slots:
+
 };
+
 
 #endif
