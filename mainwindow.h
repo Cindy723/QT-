@@ -21,6 +21,14 @@
 #include "Worker.h"
 #include "setting.h"
 
+#include "drag.h"
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QMimeData>
+#include <QPushButton>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -93,6 +101,56 @@ protected:
             painter.drawLine(0, 45, width()-2, 43);
 
             QWidget::paintEvent(event);
+        }
+
+        // 快捷指令排序相关
+        void dragEnterEvent(QDragEnterEvent* event) override {
+            // 确保接收到的是我们期望的数据类型
+            if (event->mimeData()->hasText()) {
+                event->acceptProposedAction();
+            }
+        }
+
+        void dragMoveEvent(QDragMoveEvent* event) override {
+            event->acceptProposedAction();
+        }
+
+        void dropEvent(QDropEvent* event) override {
+            // 查找拖动按钮的位置
+            QString buttonText = event->mimeData()->text();
+            QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(this->layout());
+
+            if (!layout) return;
+
+            // 将全局鼠标位置转换为当前窗口的本地坐标
+            QPoint localPos = event->pos();
+            QWidget* targetWidget = nullptr;
+            int targetIndex = layout->count();  // 默认插入到最后
+
+            for (int i = 0; i < layout->count(); ++i) {
+                QWidget* widget = layout->itemAt(i)->widget();
+                if (widget && widget->geometry().contains(localPos)) {
+                    targetWidget = widget;
+                    targetIndex = i;  // 找到鼠标指向的控件，并记录目标位置
+                    break;
+                }
+            }
+
+            QWidget* sourceButton = nullptr;
+            for (int i = 0; i < layout->count(); ++i) {
+                DraggableButton* button = qobject_cast<DraggableButton*>(layout->itemAt(i)->widget());
+                if (button && button->text() == buttonText) {
+                    sourceButton = button;  // 找到拖动的按钮
+                    break;
+                }
+            }
+
+            if (sourceButton && targetWidget) {
+                // 移除原按钮并在目标位置重新添加
+                layout->removeWidget(sourceButton);
+                layout->insertWidget(targetIndex, sourceButton);
+                event->acceptProposedAction();
+            }
         }
 
 private:

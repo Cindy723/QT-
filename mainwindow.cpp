@@ -10,6 +10,8 @@
 #include <QSettings>
 #include <QObject>
 #include <QTextCodec>
+#include <QScrollBar>
+#include "drag.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_SocketClient.setMainInstan(this);
     m_SerialCom.setMainInstan(this);
     m_setWidget = new Setting(&m_SerialCom);
+    setAcceptDrops(true);  // 接受拖放操作
 
     setWindowFlags(Qt::FramelessWindowHint);  // 禁用标题栏
     setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
@@ -196,6 +199,19 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
+    // 添加排序按钮
+    // 创建垂直布局并添加一些按钮
+    for (int i = 1; i <= m_totalFastContrl; ++i) {
+        DraggableButton* button = new DraggableButton(QString("按钮 %1").arg(i), this);
+        QSize siz;
+        siz.setHeight(26);
+        siz.setWidth(33);
+        button->resize(siz);
+        ui->verticalLayout->addWidget(button);
+    }
+
+    // 消息自动滚动
+    ui->checkBox_auto->setCheckState(Qt::Checked);
 
     // 连接串口数据
     ConnectRecev();
@@ -295,7 +311,20 @@ void MainWindow::setHistoryTextInfo(QString head, QString info)
     if(ui)
     {
         QString timestamp = QDateTime::currentDateTime().toString("[HH:mm:ss.zzz] ");
-        ui->textEdit_rec->append(timestamp + head + info);
+        if(ui->checkBox_auto->checkState() == Qt::Checked){ // 自动滚动
+            ui->textEdit_rec->append(timestamp + head + info);
+            ui->textEdit_rec->moveCursor(QTextCursor::End);
+        }
+        else {
+            // 保存当前的光标位置和滚动条位置
+            QTextCursor cursor = ui->textEdit_rec->textCursor();
+            int scrollPosition = ui->textEdit_rec->verticalScrollBar()->value();  // 获取当前滚动条位置
+            ui->textEdit_rec->append(timestamp + head + info);
+            // 恢复光标和滚动条的位置
+            ui->textEdit_rec->setTextCursor(cursor);
+            ui->textEdit_rec->verticalScrollBar()->setValue(scrollPosition);  // 还原滚动条位置
+
+        }
     }
 }
 

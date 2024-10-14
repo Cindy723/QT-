@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     MySocketClient.cpp \
     SerialCommunication.cpp \
+    drag.cpp \
     main.cpp \
     mainwindow.cpp \
     setting.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     DefineDataStruct.h \
     MySocketClient.h \
     SerialCommunication.h \
+    drag.h \
     mainwindow.h \
     setting.h \
     worker.h
