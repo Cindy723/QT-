@@ -24,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_setWidget = new Setting(&m_SerialCom);
     setAcceptDrops(true);  // 接受拖放操作
 
-    setWindowFlags(Qt::FramelessWindowHint);  // 禁用标题栏
-    setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
+    setWindowFlags(Qt::FramelessWindowHint);    // 禁用标题栏
+    setAttribute(Qt::WA_TranslucentBackground); //设置窗口背景透明
     ui->PBmini->setIcon(QIcon(":/image/mini.png"));
     ui->PBmini->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
 
@@ -183,7 +183,6 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "newObj" << newLineEdit->objectName() << "-";
     }
 
-
     // 连接快捷指令发送按钮
     for (int i = 1; i <= m_totalFastContrl; ++i) {
         QPushButton *button = findChild<QPushButton *>(QString("PB_send_%1").arg(i));
@@ -203,11 +202,9 @@ MainWindow::MainWindow(QWidget *parent)
     // 创建垂直布局并添加一些按钮
     for (int i = 1; i <= m_totalFastContrl; ++i) {
         DraggableButton* button = new DraggableButton(QString("按钮 %1").arg(i), this);
-        QSize siz;
-        siz.setHeight(26);
-        siz.setWidth(33);
-        button->resize(siz);
+        button->setFixedSize(55, 22);
         ui->verticalLayout->addWidget(button);
+        connect(button, &DraggableButton::startDrag, this, &MainWindow::onStartDrag);
     }
 
     // 消息自动滚动

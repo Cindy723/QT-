@@ -103,56 +103,6 @@ protected:
             QWidget::paintEvent(event);
         }
 
-        // 快捷指令排序相关
-        void dragEnterEvent(QDragEnterEvent* event) override {
-            // 确保接收到的是我们期望的数据类型
-            if (event->mimeData()->hasText()) {
-                event->acceptProposedAction();
-            }
-        }
-
-        void dragMoveEvent(QDragMoveEvent* event) override {
-            event->acceptProposedAction();
-        }
-
-        void dropEvent(QDropEvent* event) override {
-            // 查找拖动按钮的位置
-            QString buttonText = event->mimeData()->text();
-            QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(this->layout());
-
-            if (!layout) return;
-
-            // 将全局鼠标位置转换为当前窗口的本地坐标
-            QPoint localPos = event->pos();
-            QWidget* targetWidget = nullptr;
-            int targetIndex = layout->count();  // 默认插入到最后
-
-            for (int i = 0; i < layout->count(); ++i) {
-                QWidget* widget = layout->itemAt(i)->widget();
-                if (widget && widget->geometry().contains(localPos)) {
-                    targetWidget = widget;
-                    targetIndex = i;  // 找到鼠标指向的控件，并记录目标位置
-                    break;
-                }
-            }
-
-            QWidget* sourceButton = nullptr;
-            for (int i = 0; i < layout->count(); ++i) {
-                DraggableButton* button = qobject_cast<DraggableButton*>(layout->itemAt(i)->widget());
-                if (button && button->text() == buttonText) {
-                    sourceButton = button;  // 找到拖动的按钮
-                    break;
-                }
-            }
-
-            if (sourceButton && targetWidget) {
-                // 移除原按钮并在目标位置重新添加
-                layout->removeWidget(sourceButton);
-                layout->insertWidget(targetIndex, sourceButton);
-                event->acceptProposedAction();
-            }
-        }
-
 private:
         QRegion createRoundedMask(const QSize &size, int radius) {
             QRegion maskRegion;
@@ -195,6 +145,18 @@ private:
     void checkMethodAndSendFun(QByteArray byteArray);
     void loadSettings();
     void saveSettings();
+
+public slots:
+    void onStartDrag(DraggableButton *button) {
+        // 移除当前按钮并重新插入到目标位置
+        int index = ui->verticalLayout->indexOf(button);
+        qDebug() << "onStartDrag index" << index;
+        ui->verticalLayout->removeWidget(button);
+        button->setParent(nullptr);
+        ui->verticalLayout->insertWidget(ui->verticalLayout->count(), button);
+        button->show();
+    }
+
 //signals:
 public slots:
 

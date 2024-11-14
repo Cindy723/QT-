@@ -13,6 +13,7 @@ SOURCES += \
     MySocketClient.cpp \
     SerialCommunication.cpp \
     drag.cpp \
+    drag.cpp \
     main.cpp \
     mainwindow.cpp \
     setting.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     DefineDataStruct.h \
     MySocketClient.h \
     SerialCommunication.h \
+    drag.h \
     drag.h \
     mainwindow.h \
     setting.h \
