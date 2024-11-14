@@ -149,32 +149,31 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     //动态添加上更多的快捷指令
-    int addNum = m_totalFastContrl - 16;
-    for (int i = 0; i < addNum; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         QLineEdit *newLineEdit = new QLineEdit(this);   // 创建一个新的 QLineEdit 对象
-        //newLineEdit->setPlaceholderText(QString("lineEdit_s%1").arg(i + 17));
-        newLineEdit->setObjectName(QString("lineEdit_s%1").arg(i + 17));
+        //newLineEdit->setPlaceholderText(QString("lineEdit_s%1").arg(i + 0));
+        newLineEdit->setObjectName(QString("lineEdit_s%1").arg(i + 0));
         ui->verticalLayout_7->addWidget(newLineEdit);
         qDebug() << "newObj" << newLineEdit->objectName() << "-";
     }
-    for (int i = 0; i < addNum; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         QPushButton *newButton = new QPushButton(this);  // 创建一个新的 QPushButton 对象
         newButton->setText(QString("发送"));
-        newButton->setObjectName(QString("PB_send_%1").arg(i + 17));
+        newButton->setObjectName(QString("PB_send_%1").arg(i + 0));
         newButton->setFixedHeight(22);
 
         // 可以为按钮绑定一个信号槽，例如点击按钮后执行某些操作
         connect(newButton, &QPushButton::clicked, this, [i]() {
-            qDebug() << "Button PB_send_" << (i + 17) << " clicked!";
+            qDebug() << "Button PB_send_" << (i + 0) << " clicked!";
         });
 
         ui->verticalLayout_8->addWidget(newButton);
         qDebug() << "newObj" << newButton->objectName() << "-";
     }
-    for (int i = 0; i < addNum; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         QLineEdit *newLineEdit = new QLineEdit(this);  // 创建一个新的 QLineEdit 对象
-        //newLineEdit->setPlaceholderText(QString("lineEdit_tips_%1").arg(i + 17));
-        newLineEdit->setObjectName(QString("lineEdit_tips_%1").arg(i + 17));
+        //newLineEdit->setPlaceholderText(QString("lineEdit_tips_%1").arg(i + 0));
+        newLineEdit->setObjectName(QString("lineEdit_tips_%1").arg(i + 0));
 
         // 设置其他属性，如大小、样式等（可选）
         //newLineEdit->setFixedSize(200, 30);  // 设置固定大小
@@ -184,9 +183,11 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // 连接快捷指令发送按钮
-    for (int i = 1; i <= m_totalFastContrl; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         QPushButton *button = findChild<QPushButton *>(QString("PB_send_%1").arg(i));
+        m_vPbSend.push_back(button);
         QLineEdit *lineEdit = findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i));
+        m_linedit.push_back(lineEdit);
 
         if (button && lineEdit) {
             connect(button, &QPushButton::clicked, this, [this, lineEdit]() {
@@ -199,13 +200,14 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // 添加排序按钮
-    // 创建垂直布局并添加一些按钮
-    for (int i = 1; i <= m_totalFastContrl; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         DraggableButton* button = new DraggableButton(QString("按钮 %1").arg(i), this);
+        m_vPbdrp.push_back(button);
         button->setFixedSize(55, 22);
         ui->verticalLayout->addWidget(button);
-        connect(button, &DraggableButton::startDrag, this, &MainWindow::onStartDrag);
+        connect(button, &DraggableButton::sig_drag, this, &MainWindow::slot_drag);
     }
+
 
     // 消息自动滚动
     ui->checkBox_auto->setCheckState(Qt::Checked);
@@ -400,7 +402,7 @@ void MainWindow::loadSettings() {
     ui->lineEdit_ip->setText(settings.value("lineEdit_ip", "").toString());
     ui->lineEdit_port->setText(settings.value("lineEdit_port", "").toString());
 
-    for (int i = 1; i <= m_totalFastContrl; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i))->setText(settings.value(QString("lineEdit_s%1").arg(i), "").toString());
         findChild<QLineEdit *>(QString("lineEdit_tips_%1").arg(i))->setText(settings.value(QString("lineEdit_tips_%1").arg(i), "").toString());
     }
@@ -416,7 +418,7 @@ void MainWindow::saveSettings() {
     settings.setValue("lineEdit_ip", ui->lineEdit_ip->text());
     settings.setValue("lineEdit_port", ui->lineEdit_port->text());
 
-    for (int i = 1; i <= m_totalFastContrl; ++i) {
+    for (int i = 0; i < m_totalFastContrl; ++i) {
         settings.setValue(QString("lineEdit_s%1").arg(i), findChild<QLineEdit *>(QString("lineEdit_s%1").arg(i))->text());
         settings.setValue(QString("lineEdit_tips_%1").arg(i), findChild<QLineEdit *>(QString("lineEdit_tips_%1").arg(i))->text());
     }
